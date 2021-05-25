@@ -1,3 +1,5 @@
+package main;
+
 public class Estadistica {
     private int idJugador;
     private int partidosJugados;

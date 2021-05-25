@@ -1,3 +1,5 @@
+package main;
+
 public class Equipo {
     private int id;
     private String nombre;
@@ -32,4 +34,14 @@ public class Equipo {
     public void setEscudo(String escudo) {
         this.escudo = escudo;
     }
+/* toString de prueba para la clase test.PruebaConexionBD
+    @Override
+    public String toString() {
+        return "Equipo{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", escudo='" + escudo + '\'' +
+                '}';
+    }
+ */
 }

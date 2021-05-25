@@ -1,13 +1,12 @@
-import javax.swing.plaf.nimbus.State;
+package main;
+
 import java.sql.*;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * Esta clase ConexionBD es la encargada de conectarse con la base de datos e implementa algunos metodos para acceder
+ * Esta clase main.ConexionBD es la encargada de conectarse con la base de datos e implementa algunos metodos para acceder
  * a los diferentes datos que requiere la aplicacion (p.ej el metodo getEquipos() devuelve una lista con todos los equipos
  * que se encuentran en la base de datos)
  */
@@ -15,7 +14,7 @@ public class ConexionBD {
 
     private static final String URL ="jdbc:mysql://iis2021.cobadwnzalab.eu-central-1.rds.amazonaws.com";
     private static final String SCHEMA = "grupoD";
-    private static final String USER = "ususarioD";
+    private static final String USER = "usuarioD";
     private static final String PASS = "bonillaciborro";
 
     private Connection connection;
@@ -32,7 +31,7 @@ public class ConexionBD {
         }
     }
 
-    public ConexionBD getInstance(){
+    public static ConexionBD getInstance(){
         if (instanciaConexion == null){
             instanciaConexion = new ConexionBD();
         }
@@ -101,7 +100,7 @@ public class ConexionBD {
 
     /**
      * Obtenemos de la base de datos el estadio correspondiente un equipo
-     * @param equipo Equipo del cual queremos obtener el estadio
+     * @param equipo main.Equipo del cual queremos obtener el estadio
      * @return El estadio perteneciente al equipo introducido por parametro o null si ese equipo no existe
      */
     public Estadio getEstadioDeEquipo(Equipo equipo){
@@ -131,8 +130,8 @@ public class ConexionBD {
 
     /**
      * Obtenenos de la base de datos las estadisticas de un jugador que entra por parametro
-     * @param jugador Jugador del cual queremos obtener sus estadisticas
-     * @return La estadistica del jugador como un objeto Estadistica o null si ese jugador no existe
+     * @param jugador main.Jugador del cual queremos obtener sus estadisticas
+     * @return La estadistica del jugador como un objeto main.Estadistica o null si ese jugador no existe
      */
     public Estadistica getEstadisticaDeJugador(Jugador jugador){
         Estadistica est = null;
@@ -164,7 +163,7 @@ public class ConexionBD {
 
     /**
      * Obtenemos de la base de datos los partidos de la temporada del equipo introducido por parametro
-     * @param equipo - Equipo del cual queremos obtener sus partidos
+     * @param equipo - main.Equipo del cual queremos obtener sus partidos
      * @return Un List<> de partidos o null si ese equipo no existe
      */
     public List<Partidos> getPartidosDeEquipo(Equipo equipo){
@@ -195,7 +194,7 @@ public class ConexionBD {
     /**
      * Obetener de la base de datos el equipo asociado al id especificado por parametro
      * @param ideq - identificador del equipo que queremos buscar
-     * @return Un objeto Equipo con el equipo con el identificador ideq o null si ese identificador no esta asociado a ningun equipo
+     * @return Un objeto main.Equipo con el equipo con el identificador ideq o null si ese identificador no esta asociado a ningun equipo
      */
     private Equipo getEquipoDeID(int ideq){
         Equipo equipo = null;
