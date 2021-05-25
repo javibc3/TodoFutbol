@@ -85,7 +85,38 @@ public class ConexionBD {
                     String pos = rs.getString(4);
                     int edad = rs.getInt(5);
                     int ideq = rs.getInt(6);
-                    Jugador jug = new Jugador(id,nombre,nacion,pos,edad,ideq);
+                    int dorsal = rs.getInt(7);
+                    Jugador jug = new Jugador(id,nombre,nacion,pos,edad,ideq,dorsal);
+                    listaJugadores.add(jug);
+                }
+            }
+
+        } catch (SQLException throwables) {
+            System.err.println("SQL exception:"+throwables.getMessage());
+            throwables.printStackTrace();
+        }
+        return listaJugadores;
+
+    }
+
+    public List<Jugador> getJugadoresDeEquipo(int id){
+        List<Jugador> listaJugadores = null;
+
+        try {
+            PreparedStatement sentencia = connection.prepareStatement("SELECT * FROM JUGADORES WHERE IDEQUIPO = ?");
+            sentencia.setInt(1,id);
+            ResultSet rs = sentencia.executeQuery();
+            if(rs.isBeforeFirst()){
+                listaJugadores = new ArrayList<>();
+                while(rs.next()){
+                    int idjug = rs.getInt(1);
+                    String nombre = rs.getString(2);
+                    String nacion = rs.getString(3);
+                    String pos = rs.getString(4);
+                    int edad = rs.getInt(5);
+                    int ideq = rs.getInt(6);
+                    int dorsal = rs.getInt(7);
+                    Jugador jug = new Jugador(idjug,nombre,nacion,pos,edad,ideq,dorsal);
                     listaJugadores.add(jug);
                 }
             }

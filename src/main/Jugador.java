@@ -7,14 +7,16 @@ public class Jugador {
     private String posicion;
     private int edad;
     private int idEquipo;
+    private int dorsal;
 
-    public Jugador(int id, String nom, String nac, String pos, int ed, int idEq){
+    public Jugador(int id, String nom, String nac, String pos, int ed, int idEq, int dorsal){
         this.id = id;
         nombre = nom;
         nacionalidad = nac;
         posicion = pos;
         edad = ed;
         idEquipo = idEq;
+        this.dorsal=dorsal;
     }
 
     public int getId() {
@@ -55,6 +57,14 @@ public class Jugador {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    public int getDorsal() {
+        return dorsal;
+    }
+
+    public void setDorsal(int dorsal) {
+        this.dorsal = dorsal;
     }
 
     public int getIdEquipo() {
