@@ -8,13 +8,23 @@ public class Partidos {
     private Equipo equipoVisitante;
     private String colegiados;
     private Date fecha;
+    private String resultado;
 
-    public Partidos(int idPartido, Equipo equipoLocal, Equipo equipoVisitante, String colegiados, Date fecha) {
+    public Partidos(int idPartido, Equipo equipoLocal, Equipo equipoVisitante, String colegiados, Date fecha, String resultado) {
         this.idPartido = idPartido;
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
         this.colegiados = colegiados;
         this.fecha = fecha;
+        this.resultado = resultado;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
     }
 
     public int getIdPartido() {
@@ -55,5 +65,17 @@ public class Partidos {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    @Override
+    public String toString() {
+        return "Partidos{" +
+                "idPartido=" + idPartido +
+                ", equipoLocal=" + equipoLocal +
+                ", equipoVisitante=" + equipoVisitante +
+                ", colegiados='" + colegiados + '\'' +
+                ", fecha=" + fecha +
+                ", resultado='" + resultado + '\'' +
+                '}';
     }
 }

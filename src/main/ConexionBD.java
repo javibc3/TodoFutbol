@@ -40,7 +40,7 @@ public class ConexionBD {
 
     /**
      * Devuelve una lista con los equipos que hay presentes en la base de datos
-     * @return Los equipos presentes en la base de datos o null si no hay ningun equipo
+     * @return Los equipos presentes en la base de datos o {@code null} si no hay ningun equipo
      */
     public List<Equipo> getEquipos(){
         List<Equipo> listaEquipos = null;
@@ -66,8 +66,8 @@ public class ConexionBD {
 
     /**
      * Devuelve una lista de jugadores que pertenecen a un equipo especifico
-     * @param equipo - El equipo del cual se quieren obtener los jugadores
-     * @return Una lista con los jugadores o null si ese equipo no existe
+     * @param equipo El equipo del cual se quieren obtener los jugadores
+     * @return Una {@code List} con los jugadores o {@code null} si ese equipo no existe
      */
     public List<Jugador> getJugadoresDeEquipo(Equipo equipo){
         List<Jugador> listaJugadores = null;
@@ -99,6 +99,11 @@ public class ConexionBD {
 
     }
 
+    /**
+     * Obtiene los jugadores de un Equipo mediante su identificador numerico
+     * @param id El identificador unico del equipo
+     * @return Una {@code List} de los jugadores del Equipo o {@code null} si {@code id} no se corresponde a ningun equipo
+     */
     public List<Jugador> getJugadoresDeEquipo(int id){
         List<Jugador> listaJugadores = null;
 
@@ -132,7 +137,7 @@ public class ConexionBD {
     /**
      * Obtenemos de la base de datos el estadio correspondiente un equipo
      * @param equipo main.Equipo del cual queremos obtener el estadio
-     * @return El estadio perteneciente al equipo introducido por parametro o null si ese equipo no existe
+     * @return El estadio perteneciente al equipo introducido por parametro o {@code null} si ese equipo no existe
      */
     public Estadio getEstadioDeEquipo(Equipo equipo){
         Estadio estadio = null;
@@ -206,26 +211,57 @@ public class ConexionBD {
             sentencia.setInt(2,equipo.getId());
             ResultSet rs = sentencia.executeQuery();
             if(rs.isBeforeFirst()){
-                int id = rs.getInt(1);
-                Equipo equipoLocal = getEquipoDeID(rs.getInt(2));
-                Equipo equipoVisitante = getEquipoDeID(rs.getInt(3));
-                String colegiados = rs.getString(4);
-                Date fecha = rs.getDate(5);
-                listaPartidos.add(new Partidos(id,equipoLocal,equipoVisitante,colegiados,fecha));
+                listaPartidos = new ArrayList<>();
+                while(rs.next()) {
+                    int id = rs.getInt(1);
+                    Equipo equipoLocal = getEquipoDeID(rs.getInt(2));
+                    Equipo equipoVisitante = getEquipoDeID(rs.getInt(3));
+                    String colegiados = rs.getString(4);
+                    Date fecha = rs.getDate(5);
+                    String resultado = rs.getString(6);
+                    listaPartidos.add(new Partidos(id, equipoLocal, equipoVisitante, colegiados, fecha, resultado));
+                }
             }
         } catch (SQLException throwables) {
             System.err.println("SQL Exception: "+throwables.getMessage());
             throwables.printStackTrace();
         }
-
         return listaPartidos;
+    }
 
+    /**
+     * Obtiene todos los partidos de de todos los equipos de la temporada
+     * @return Una {@code List} con todos los partidos de la temporada
+     */
+    public List<Partidos> getPartidos(){
+        List<Partidos> listaPartidos = null;
+
+        try {
+            Statement sentencia = connection.createStatement();
+            ResultSet rs = sentencia.executeQuery("SELECT * FROM PARTIDOS");
+            if(rs.isBeforeFirst()){
+                listaPartidos = new ArrayList<>();
+                while(rs.next()) {
+                    int id = rs.getInt(1);
+                    Equipo equipoLocal = getEquipoDeID(rs.getInt(2));
+                    Equipo equipoVisitante = getEquipoDeID(rs.getInt(3));
+                    String colegiados = rs.getString(4);
+                    Date fecha = rs.getDate(5);
+                    String resultado = rs.getString(6);
+                    listaPartidos.add(new Partidos(id, equipoLocal, equipoVisitante, colegiados, fecha, resultado));
+                }
+            }
+        } catch (SQLException throwables) {
+            System.err.println("SQL Exception: "+throwables.getMessage());
+            throwables.printStackTrace();
+        }
+        return listaPartidos;
     }
 
     /**
      * Obetener de la base de datos el equipo asociado al id especificado por parametro
-     * @param ideq - identificador del equipo que queremos buscar
-     * @return Un objeto main.Equipo con el equipo con el identificador ideq o null si ese identificador no esta asociado a ningun equipo
+     * @param ideq Identificador del equipo que queremos buscar
+     * @return Un {@code Equipo} con el equipo con el identificador ideq o {@code null} si ese identificador no esta asociado a ningun equipo
      */
     private Equipo getEquipoDeID(int ideq){
         Equipo equipo = null;
@@ -235,9 +271,10 @@ public class ConexionBD {
             sentencia.setInt(1,ideq);
             ResultSet rs = sentencia.executeQuery();
             if(rs.isBeforeFirst()){
-               String nombre = rs.getString(2);
-               String escudo = rs.getString(3);
-               equipo = new Equipo(ideq,nombre,escudo);
+                rs.next();
+                String nombre = rs.getString(2);
+                String escudo = rs.getString(3);
+                equipo = new Equipo(ideq,nombre,escudo);
             }
         } catch (SQLException throwables) {
             System.err.println("SQL Exception: "+throwables.getMessage());
@@ -246,6 +283,7 @@ public class ConexionBD {
 
         return equipo;
     }
+
 
 
 }
