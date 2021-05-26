@@ -11,5 +11,6 @@ public class PruebaConexionBD {
         main.ConexionBD BD = main.ConexionBD.getInstance();
         List<Equipo> equipo = BD.getEquipos();
         System.out.println(Arrays.toString(equipo.toArray()));
+        System.out.println("Prueba de conexion:");
     }
 }
