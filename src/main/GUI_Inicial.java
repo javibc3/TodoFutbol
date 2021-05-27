@@ -102,15 +102,6 @@ public class GUI_Inicial {
         framePrincipal.setMinimumSize(new Dimension(400,400));
         framePrincipal.pack();
         framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-
-
-        framePrincipal.setVisible(true);
-        framePrincipal.setMinimumSize(new Dimension(400,400));
-        framePrincipal.pack();
-        framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
 }
