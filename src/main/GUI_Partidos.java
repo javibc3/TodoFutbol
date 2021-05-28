@@ -2,13 +2,13 @@ package main;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
-public class GUI_Inicial extends  JFrame{
+public class GUI_Partidos extends  JFrame{
 
-    private JFrame framePrincipal;
+    private JFrame framePartidos;
 
     JPanel panelContenedor;
 
@@ -24,20 +24,15 @@ public class GUI_Inicial extends  JFrame{
 
 
     private JLabel labelTitulo;
-
-    private JButton botonEq1;
-    private JButton botonEq2;
-    private JButton botonEq3;
-    private JButton botonEq4;
-    private JButton botonEq5;
-    private JButton botonEq6;
     private JButton botonEquipos;
     private JButton botonPartidos;
     private JButton botonForos;
     private JButton botonPrensa;
+    private JLabel lblClasificacion;
+    private JLabel lblPartidos_1;
 
-    public GUI_Inicial(){
-        framePrincipal = new JFrame("TodoFútbol");
+    public GUI_Partidos(){
+        framePartidos = new JFrame("TodoFútbol");
 
         panelContenedor = new JPanel(new GridLayout(3, 1));
         panelArriba = new JPanel(new GridLayout(2, 1));
@@ -50,40 +45,26 @@ public class GUI_Inicial extends  JFrame{
 
 
 
-        labelTitulo = new JLabel("TodoFútbol");
+        labelTitulo = new JLabel("TodoFÃºtbol");
         labelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         labelTitulo.setVerticalAlignment(SwingConstants.BOTTOM);
         labelTitulo.setFont(new Font("Serif", Font.PLAIN, 50));
 
         subpanelTitulo.add(labelTitulo);
 
-        botonEq1 = new JButton("Equipo 1");
-        botonEq2 = new JButton("Equipo 2");
-        botonEq3 = new JButton("Equipo 3");
-        botonEq4 = new JButton("Equipo 4");
-        botonEq5 = new JButton("Equipo 5");
-        botonEq6 = new JButton("Equipo 6");
-
 
 
         botonEquipos = new JButton("Equipos");
-        botonPartidos = new JButton("Partidos");
-        botonPartidos.addActionListener(new ActionListener() {
+        botonEquipos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
-                GUI_Partidos gui_Partidos = new GUI_Partidos();
-                gui_Partidos.setVisible(true);
-                framePrincipal.dispose();
+                GUI_Inicial inicial = new GUI_Inicial();
+                inicial.setVisible(true);
+                framePartidos.dispose();
             }
         });
+        botonPartidos = new JButton("Partidos");
         botonForos = new JButton("Foros");
         botonPrensa = new JButton("Prensa");
-
-        panelBotones.add(botonEq1);
-        panelBotones.add(botonEq2);
-        panelBotones.add(botonEq3);
-        panelBotones.add(botonEq4);
-        panelBotones.add(botonEq5);
-        panelBotones.add(botonEq6);
 
         subpanelMenu.add(botonEquipos);
         subpanelMenu.add(botonPartidos);
@@ -92,6 +73,12 @@ public class GUI_Inicial extends  JFrame{
 
         panelArriba.add(subpanelTitulo);
         panelArriba.add(subpanelEnBlanco1);
+
+        lblPartidos_1 = new JLabel("Partidos");
+        subpanelEnBlanco1.add(lblPartidos_1);
+
+        lblClasificacion = new JLabel("Clasificaci\u00F3n");
+        subpanelEnBlanco1.add(lblClasificacion);
 
         panelAbajo.add(subpanelEnBlanco2);
         panelAbajo.add(subpanelMenu);
@@ -102,14 +89,14 @@ public class GUI_Inicial extends  JFrame{
 
 
 
-        framePrincipal.getContentPane().add(panelContenedor);
+        framePartidos.getContentPane().add(panelContenedor);
 
 
 
-        framePrincipal.setVisible(true);
-        framePrincipal.setMinimumSize(new Dimension(400,400));
-        framePrincipal.pack();
-        framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        framePartidos.setVisible(true);
+        framePartidos.setMinimumSize(new Dimension(400,400));
+        framePartidos.pack();
+        framePartidos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 }
