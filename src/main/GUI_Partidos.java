@@ -63,6 +63,7 @@ public class GUI_Partidos extends  JFrame{
 
 
         botonEquipos = new JButton("Equipos");
+        /*
         botonEquipos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 GUI_Inicial inicial = new GUI_Inicial();
@@ -70,6 +71,7 @@ public class GUI_Partidos extends  JFrame{
                 framePartidos.dispose();
             }
         });
+         */
         botonPartidos = new JButton("Partidos");
         botonForos = new JButton("Foros");
         botonPrensa = new JButton("Prensa");
