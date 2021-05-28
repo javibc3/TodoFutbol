@@ -1,8 +1,8 @@
 package main;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
+import java.util.*;
 
 
 /**
@@ -174,7 +174,7 @@ public class ConexionBD {
         PreparedStatement sentencia;
 
         try {
-            sentencia = connection.prepareStatement("SELECT * FROM ESTADISTICA WHERE IDJUGADOR = ?");
+            sentencia = connection.prepareStatement("SELECT * FROM ESTADISTICAS WHERE IDJUGADOR = ?");
             sentencia.setInt(1,jugador.getId());
             ResultSet rs = sentencia.executeQuery();
             if(rs.isBeforeFirst()){
@@ -283,7 +283,28 @@ public class ConexionBD {
 
         return equipo;
     }
+    public SortedMap<String, Integer> getGoleadores(){
+        SortedMap<String, Integer> goleadores = null;
 
+        try {
+            PreparedStatement sentencia = connection.prepareStatement("SELECT J.NOMBRE, E.NUMGOLES\n" +
+                    "FROM JUGADORES J JOIN ESTADISTICAS E ON (J.ID = E.IDJUGADOR)\n" +
+                    "WHERE POSICION != 'POR'\n"
+                    );
+           // sentencia.setInt(1,equipo.getId());
+            ResultSet rs = sentencia.executeQuery();
+            if(rs.isBeforeFirst()){
+                goleadores = new TreeMap<>();
+                while(rs.next()) {
+                    goleadores.put(rs.getString(1), rs.getInt(2));
+                }
+            }
+        } catch (SQLException throwables) {
+            System.err.println("SQL Exception: "+throwables.getMessage());
+            throwables.printStackTrace();
+        }
+        return goleadores;
+    }
 
 
 }
