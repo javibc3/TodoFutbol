@@ -68,6 +68,7 @@ public class GUI_Inicial extends  JFrame{
 
         botonEquipos = new JButton("Equipos");
         botonPartidos = new JButton("Partidos");
+        /*Estoy probando el controlador
         botonPartidos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 GUI_Partidos gui_Partidos = new GUI_Partidos();
@@ -75,6 +76,7 @@ public class GUI_Inicial extends  JFrame{
                 framePrincipal.dispose();
             }
         });
+         */
         botonForos = new JButton("Foros");
         botonPrensa = new JButton("Prensa");
 
@@ -110,6 +112,40 @@ public class GUI_Inicial extends  JFrame{
         framePrincipal.setMinimumSize(new Dimension(400,400));
         framePrincipal.pack();
         framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void controlador(ActionListener ctr) {
+        //boton partidos
+        botonPartidos.addActionListener(ctr);
+        botonPartidos.setActionCommand("BOTON PARTIDOS");
+        //boton equipos
+        botonEquipos.addActionListener(ctr);
+        botonEquipos.setActionCommand("BOTON EQUIPOS");
+        //boton Foros
+        botonForos.addActionListener(ctr);
+        botonForos.setActionCommand("BOTON FOROS");
+        //boton prensa--goleadores
+        botonPrensa.addActionListener(ctr);
+        botonPrensa.setActionCommand("BOTON PRENSA");
+    }
+    public void LanzarPartidos() {
+        GUI_Partidos gui_partidos = new GUI_Partidos();
+        gui_partidos.setVisible(true);
+        framePrincipal.dispose();
+        System.out.println("Se ha pulsado el boton partidos "
+                + "Abrir GUI_partidos");
+    }
+    public void LanzarEquipos() {
+        System.out.println("Se ha pulsado el boton equipos "
+                + "Abrir GUI_equipos");
+    }
+    public void LanzarForos() {
+        System.out.println("Se ha pulsado el boton foros "
+                + "Abrir GUI_Foros");
+    }
+    public void LanzarPrensa() {
+        System.out.println("Se ha pulsado el boton prensa "
+                + "Abrir GUI_prensa");
     }
 
 }
