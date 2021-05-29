@@ -8,13 +8,9 @@ public class Controlador implements ActionListener {
     private GUI_Inicial panel;
     private GUI_Partidos par;
 
-    public Controlador(GUI_Inicial ppal) {
-        this.panel = ppal;
-    }
+    public Controlador(GUI_Inicial ppal) { this.panel = ppal; }
 
-    public Controlador(GUI_Partidos par) {
-        this.par = par;
-    }
+    public Controlador(GUI_Partidos par) { this.par = par; }
 
     @Override
     public void actionPerformed(ActionEvent e) {

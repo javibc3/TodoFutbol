@@ -69,7 +69,13 @@ public class GUI_Equipos extends JFrame {
         frameSuperior.add(botonJugadores);
         frameSuperior.add(botonEstadio);
 
-        frameCentral = new GUI_EquiposEstadio("https://imagesvc.timeincapp.com/v3/fan/image?url=https://therealchamps.com/wp-content/uploads/getty-images/2018/12/458769189.jpeg&c=sc&w=1600&h=1132");
+        /*
+        main.ConexionBD BD = main.ConexionBD.getInstance();
+        List<Partidos> partidos = BD.getPartidosDeEquipo(eq);
+        frameCentral = new GUI_EquiposPartido(partidos);
+        */
+        //Si descomentas la parte anterior, quita la linea siguiente
+        frameCentral = new GUI_EquiposPartido(null);
 
         frameInferior = new JPanel(new GridLayout(1,4));
 
@@ -142,7 +148,7 @@ public class GUI_Equipos extends JFrame {
 
     // Metodo que usa la clase ControladorEquipos, lo que hace es crear una ventana con la GUI de GUI_Equipos, pero le
     // añade al panel de en medio el contenido de GUI_EquiposJugadores
-    // TODO: Cambiar la clase GUI_EquiposJugadores para que reciba como parametro un Equipo y lo maneje
+    // TODO: Añadir metodos a la clase GUI_EquiposJugadores para que maneje una lista de jugadores
 
     public void LanzarJugadores(){
         GUI_Equipos gui = new GUI_Equipos(eq);
@@ -157,11 +163,17 @@ public class GUI_Equipos extends JFrame {
 
     // Metodo que usa la clase ControladorEquipos, lo que hace es crear una ventana con la GUI de GUI_Equipos, pero le
     // añade al panel de en medio el contenido de GUI_EquiposPartido pasandole un parametro null
-    // TODO: Cambiar la clase GUI_EquiposPartido para que reciba como parametro un Equipo y lo maneje
     public void LanzarPartidos_Eq(){
         GUI_Equipos gui = new GUI_Equipos(eq);
         ControladorEquipos ctr = new ControladorEquipos(gui);
         gui.ControladorEquipos(ctr);
+
+        /*
+        main.ConexionBD BasDat = main.ConexionBD.getInstance();
+        List<Partidos> partidos = BasDat.getPartidosDeEquipo(eq);
+        */
+
+        //Si descomentas la parte anterior, cambia null por partidos en la siguiente linea
         gui.cambiarFrameCentral(new GUI_EquiposPartido(null));
         gui.setVisible(true);
         frameEquipos.dispose();
@@ -172,13 +184,19 @@ public class GUI_Equipos extends JFrame {
 
     // Metodo que usa la clase ControladorEquipos, lo que hace es crear una ventana con la GUI de GUI_Equipos, pero le
     // añade al panel de en medio el contenido de GUI_EquiposEstadio
-    // TODO: Cambiar la clase GUI_EquiposEstadio para que reciba como parametro un Equipo y lo maneje
 
     public void LanzarEstadio(){
         GUI_Equipos gui = new GUI_Equipos(eq);
         ControladorEquipos ctr = new ControladorEquipos(gui);
         gui.ControladorEquipos(ctr);
-        gui.cambiarFrameCentral(new GUI_EquiposEstadio("https://es.wikipedia.org/wiki/Estadio_Santiago_Bernab%C3%A9u#/media/Archivo:Estadio_Santiago_Bernab%C3%A9u_(2016).jpg"));
+
+        /*
+        main.ConexionBD BasDat = main.ConexionBD.getInstance();
+        Estadio estadio = BasDat.getEstadioDeEquipo(eq);
+        */
+
+        //Si descomentas la parte anterior, cambia null por estadio en la siguiente linea
+        gui.cambiarFrameCentral(new GUI_EquiposEstadio("https://imagesvc.timeincapp.com/v3/fan/image?url=https://therealchamps.com/wp-content/uploads/getty-images/2018/12/458769189.jpeg&c=sc&w=1600&h=1132", null));
         gui.setVisible(true);
         frameEquipos.dispose();
         dispose();
@@ -193,8 +211,8 @@ public class GUI_Equipos extends JFrame {
         gui.setVisible(true);
         frameEquipos.dispose();
         dispose();
-        System.out.println("Se ha pulsado el boton partidos "
-                + "Abrir GUI_partidos");
+        System.out.println("Se ha pulsado el boton Partidos "
+                + "Abrir GUI_Partidos");
     }
 
     public void LanzarEquipos() {
@@ -204,17 +222,17 @@ public class GUI_Equipos extends JFrame {
         gui.setVisible(true);
         frameEquipos.dispose();
         dispose();
-        System.out.println("Se ha pulsado el boton equipos "
-                + "Abrir GUI_equipos");
+        System.out.println("Se ha pulsado el boton Equipos "
+                + "Abrir GUI_Inicial");
     }
 
     public void LanzarForos() {
-        System.out.println("Se ha pulsado el boton foros "
+        System.out.println("Se ha pulsado el boton Foros "
                 + "Abrir GUI_Foros");
     }
     public void LanzarPrensa() {
-        System.out.println("Se ha pulsado el boton prensa "
-                + "Abrir GUI_prensa");
+        System.out.println("Se ha pulsado el boton Prensa "
+                + "Abrir GUI_Prensa");
     }
 
 }

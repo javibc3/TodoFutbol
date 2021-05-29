@@ -154,19 +154,19 @@ public class GUI_Inicial extends  JFrame{
         gui.setVisible(true);
         framePrincipal.dispose();
         dispose();
-        System.out.println("Se ha pulsado el boton partidos "
-                + "Abrir GUI_partidos");
+        System.out.println("Se ha pulsado el boton Partidos "
+                + "Abrir GUI_Partidos");
     }
     public void LanzarEquipos() {
         System.out.println("Se ha pulsado el boton equipos ");
     }
     public void LanzarForos() {
-        System.out.println("Se ha pulsado el boton foros "
+        System.out.println("Se ha pulsado el boton Foros "
                 + "Abrir GUI_Foros");
     }
     public void LanzarPrensa() {
-        System.out.println("Se ha pulsado el boton prensa "
-                + "Abrir GUI_prensa");
+        System.out.println("Se ha pulsado el boton Prensa "
+                + "Abrir GUI_Prensa");
     }
 
     /*
@@ -181,14 +181,14 @@ public class GUI_Inicial extends  JFrame{
         listaEquipos = BD.getEquipos();
         GUI_Equipos gui = new GUI_Equipos(listaEquipos.get(n));
          */
+        // Si se descomenta la parte anterior, hay que borrar la siguiente linea
         GUI_Equipos gui = new GUI_Equipos(null);
         ControladorEquipos ctr = new ControladorEquipos(gui);
         gui.ControladorEquipos(ctr);
-        gui.LanzarPartidos_Eq();
         gui.setVisible(true);
         framePrincipal.dispose();
         dispose();
 
-        System.out.println("Se ha pulsado el boton Equipos" + n + ". Abrir GUI_Equipos");
+        System.out.println("Se ha pulsado el boton Equipos" + n + ". Abrir GUI_Equipos" + n);
     }
 }

@@ -1,14 +1,10 @@
 package main;
 
-import main.GUI_Inicial;
-import main.GUI_Partidos;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ControladorEquipos implements ActionListener {
 
-    private GUI_Inicial panel;
     private GUI_Equipos EquiposPPal;
 
     public ControladorEquipos(GUI_Equipos equ) { this.EquiposPPal = equ;}

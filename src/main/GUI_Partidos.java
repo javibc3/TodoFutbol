@@ -92,15 +92,17 @@ public class GUI_Partidos extends  JFrame{
         lblClasificacion.setHorizontalAlignment(SwingConstants.CENTER);
         subpanelEnBlanco1.add(lblClasificacion);
 
-        List<Partidos> listaPartidos = new ArrayList<>();
-        List<Equipo> listaEquipos = new ArrayList<>();
         lbPartido1 = new JLabel("Partido1");
         lbPartido2 = new JLabel("Partido2");
         lbPartido3 = new JLabel("Partido3");
         lbPartido1.setHorizontalAlignment(SwingConstants.CENTER);
         lbPartido2.setHorizontalAlignment(SwingConstants.CENTER);
         lbPartido3.setHorizontalAlignment(SwingConstants.CENTER);
+
         /*
+        List<Partidos> listaPartidos = new ArrayList<>();
+        List<Equipo> listaEquipos = new ArrayList<>();
+
         main.ConexionBD BD = main.ConexionBD.getInstance();
         listaPartidos = BD.getPartidos();
         lbPartido1 = new JLabel(listaPartidos.get(0).toString());
@@ -112,6 +114,8 @@ public class GUI_Partidos extends  JFrame{
         lbClasif2 = new JLabel(listaEquipos.get(1).getNombre());
         lbClasif3 = new JLabel(listaEquipos.get(2).getNombre());
         */
+
+
         lbClasif1 = new JLabel("Placeholder1");
         lbClasif2 = new JLabel("Placeholder2");
         lbClasif3 = new JLabel("Placeholder3");
@@ -197,6 +201,7 @@ public class GUI_Partidos extends  JFrame{
         }
         return Top3;
     }
+
     public void controlador(ActionListener ctr) {
         //boton partidos
         botonPartidos.addActionListener(ctr);
@@ -211,10 +216,12 @@ public class GUI_Partidos extends  JFrame{
         botonPrensa.addActionListener(ctr);
         botonPrensa.setActionCommand("BOTON PAR:PRENSA");
     }
+
     public void LanzarPartidos() {
-        System.out.println("Se ha pulsado el boton partidos "
-                + "Abrir GUI_partidos");
+        System.out.println("Se ha pulsado el boton Partidos "
+                + "Abrir GUI_Partidos");
     }
+
     public void LanzarEquipos() {
         GUI_Inicial gui = new GUI_Inicial();
         Controlador ctr = new Controlador(gui);
@@ -222,17 +229,17 @@ public class GUI_Partidos extends  JFrame{
         gui.setVisible(true);
         framePartidos.dispose();
         dispose();
-        System.out.println("Se ha pulsado el boton equipos "
-                + "Abrir GUI_equipos");
+        System.out.println("Se ha pulsado el boton Equipos "
+                + "Abrir GUI_Inicial");
     }
+
     public void LanzarForos() {
-        System.out.println("Se ha pulsado el boton foros "
+        System.out.println("Se ha pulsado el boton Foros "
                 + "Abrir GUI_Foros");
     }
+
     public void LanzarPrensa() {
-        System.out.println("Se ha pulsado el boton prensa "
-                + "Abrir GUI_prensa");
+        System.out.println("Se ha pulsado el boton Prensa "
+                + "Abrir GUI_Prensa");
     }
-
-
 }

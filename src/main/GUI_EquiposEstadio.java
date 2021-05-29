@@ -25,9 +25,7 @@ public class GUI_EquiposEstadio extends JPanel {
     private JPanel panelIzquierdo;
     private ImageIcon imagen;
 
-    //TODO Habria que crear varios metodos para modificar los diferentes campos de la interfaz (nombre, aforo, imagen, etc)
-
-    public GUI_EquiposEstadio(String imagen){
+    public GUI_EquiposEstadio(String imagen, Estadio estadio){
         super(new GridLayout(1,2));
 
         nombre = new JLabel("Nombre");
@@ -35,11 +33,17 @@ public class GUI_EquiposEstadio extends JPanel {
         ciudad = new JLabel("Ciudad");
         fechaCreacion = new JLabel("Fecha de construccion");
 
-        nombreEstadio = new JLabel();
-        aforoEstadio = new JLabel();
-        ciudadEstadio = new JLabel();
-        fechaEstadio = new JLabel();
-
+        if(estadio != null) {
+            setNombreEstadio(estadio);
+            setAforoEstadio(estadio);
+            setCiudadEstadio(estadio);
+            setFechaEstadio(estadio);
+        } else {
+            nombreEstadio = new JLabel("PruebaNombre");
+            aforoEstadio = new JLabel("PruebaAforo");
+            ciudadEstadio = new JLabel("PruebaCiudad");
+            fechaEstadio = new JLabel("PruebaFecha");
+        }
         panelIzquierdo = new JPanel(new GridLayout(4,2));
 
         panelIzquierdo.add(nombre);
@@ -62,7 +66,22 @@ public class GUI_EquiposEstadio extends JPanel {
         }
 
         add(new JLabel(this.imagen));
+    }
 
+    private void setNombreEstadio(Estadio est){
+        nombreEstadio = new JLabel(est.getNombre());
+    }
+
+    private void setAforoEstadio(Estadio est){
+        aforoEstadio = new JLabel(Integer.toString(est.getAforo()));
+    }
+
+    private void setCiudadEstadio(Estadio est){
+        ciudadEstadio = new JLabel(est.getCiudad());
+    }
+
+    private void setFechaEstadio(Estadio est){
+        fechaEstadio = new JLabel(Integer.toString(est.getFechaconstruccion()));
     }
 
 }
