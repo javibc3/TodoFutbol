@@ -37,7 +37,15 @@ public class GUI_Inicial extends  JFrame{
     private JButton botonForos;
     private JButton botonPrensa;
 
+    ConexionBD BD;
+    List<Equipo> listaEquipos;
+
+
     public GUI_Inicial(){
+        // Establecemos una conexión con la BD y obtenemos una lista con los equipos para poder rellenar los botones con los nombres
+        BD = ConexionBD.getInstance();
+        listaEquipos = BD.getEquipos();
+
         framePrincipal = new JFrame("TodoFútbol");
 
         panelContenedor = new JPanel(new GridLayout(3, 1));
@@ -58,13 +66,22 @@ public class GUI_Inicial extends  JFrame{
 
         subpanelTitulo.add(labelTitulo);
 
+        /*
         botonEq1 = new JButton("Equipo 1");
         botonEq2 = new JButton("Equipo 2");
         botonEq3 = new JButton("Equipo 3");
         botonEq4 = new JButton("Equipo 4");
         botonEq5 = new JButton("Equipo 5");
         botonEq6 = new JButton("Equipo 6");
+        */
 
+        // Los botones ya muestran los nombres de los equipos que tenemos en al BD
+        botonEq1 = new JButton(listaEquipos.get(0).getNombre());
+        botonEq2 = new JButton(listaEquipos.get(1).getNombre());
+        botonEq3 = new JButton(listaEquipos.get(2).getNombre());
+        botonEq4 = new JButton(listaEquipos.get(3).getNombre());
+        botonEq5 = new JButton(listaEquipos.get(4).getNombre());
+        botonEq6 = new JButton(listaEquipos.get(5).getNombre());
 
 
         botonEquipos = new JButton("Equipos");
@@ -175,14 +192,11 @@ public class GUI_Inicial extends  JFrame{
      a la GUI, pero eso todavia hay que testearlo.
      */
     public void LanzarEquipos1_6(int n) {
-        /*
-        main.ConexionBD BD = main.ConexionBD.getInstance();
-        List<Equipo> listaEquipos;
-        listaEquipos = BD.getEquipos();
-        GUI_Equipos gui = new GUI_Equipos(listaEquipos.get(n));
-         */
+
+        GUI_Equipos gui = new GUI_Equipos(listaEquipos.get(n-1));
+
         // Si se descomenta la parte anterior, hay que borrar la siguiente linea
-        GUI_Equipos gui = new GUI_Equipos(null);
+        //GUI_Equipos gui = new GUI_Equipos(null);
         ControladorEquipos ctr = new ControladorEquipos(gui);
         gui.ControladorEquipos(ctr);
         gui.setVisible(true);
