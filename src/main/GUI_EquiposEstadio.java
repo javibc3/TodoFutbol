@@ -63,7 +63,6 @@ public class GUI_EquiposEstadio extends JPanel {
 
         add(new JLabel(this.imagen));
 
-
     }
 
 }

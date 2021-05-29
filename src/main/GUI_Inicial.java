@@ -3,6 +3,8 @@ package main;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class GUI_Inicial extends  JFrame{
@@ -126,6 +128,24 @@ public class GUI_Inicial extends  JFrame{
         //boton prensa--goleadores
         botonPrensa.addActionListener(ctr);
         botonPrensa.setActionCommand("BOTON PRENSA");
+        //boton equipo1
+        botonEq1.addActionListener(ctr);
+        botonEq1.setActionCommand("EQUIPOS1");
+        //boton equipo2
+        botonEq2.addActionListener(ctr);
+        botonEq2.setActionCommand("EQUIPOS2");
+        //boton equipo3
+        botonEq3.addActionListener(ctr);
+        botonEq3.setActionCommand("EQUIPOS3");
+        //boton equipo4
+        botonEq4.addActionListener(ctr);
+        botonEq4.setActionCommand("EQUIPOS4");
+        //boton equipo5
+        botonEq5.addActionListener(ctr);
+        botonEq5.setActionCommand("EQUIPOS5");
+        //boton equipo6
+        botonEq6.addActionListener(ctr);
+        botonEq6.setActionCommand("EQUIPOS6");
     }
     public void LanzarPartidos() {
         GUI_Partidos gui = new GUI_Partidos();
@@ -133,6 +153,7 @@ public class GUI_Inicial extends  JFrame{
         gui.controlador(ctr);
         gui.setVisible(true);
         framePrincipal.dispose();
+        dispose();
         System.out.println("Se ha pulsado el boton partidos "
                 + "Abrir GUI_partidos");
     }
@@ -148,4 +169,26 @@ public class GUI_Inicial extends  JFrame{
                 + "Abrir GUI_prensa");
     }
 
+    /*
+     Funcion que lanza la clase Controlador, y lo que hace es crear una ventana con la GUI de GUI_Equipos, y por
+     defecto se enseña la pestaña de Partidos. En comentarios esta la version que usa la BD para pasarle un equipo
+     a la GUI, pero eso todavia hay que testearlo.
+     */
+    public void LanzarEquipos1_6(int n) {
+        /*
+        main.ConexionBD BD = main.ConexionBD.getInstance();
+        List<Equipo> listaEquipos;
+        listaEquipos = BD.getEquipos();
+        GUI_Equipos gui = new GUI_Equipos(listaEquipos.get(n));
+         */
+        GUI_Equipos gui = new GUI_Equipos(null);
+        ControladorEquipos ctr = new ControladorEquipos(gui);
+        gui.ControladorEquipos(ctr);
+        gui.LanzarPartidos_Eq();
+        gui.setVisible(true);
+        framePrincipal.dispose();
+        dispose();
+
+        System.out.println("Se ha pulsado el boton Equipos" + n + ". Abrir GUI_Equipos");
+    }
 }

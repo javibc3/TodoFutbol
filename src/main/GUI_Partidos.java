@@ -221,6 +221,7 @@ public class GUI_Partidos extends  JFrame{
         gui.controlador(ctr);
         gui.setVisible(true);
         framePartidos.dispose();
+        dispose();
         System.out.println("Se ha pulsado el boton equipos "
                 + "Abrir GUI_equipos");
     }

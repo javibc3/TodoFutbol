@@ -19,10 +19,13 @@ public class GUI_EquiposPartido extends JPanel {
     public GUI_EquiposPartido(List<String> partidos){
         super(new GridLayout(1,1));
 
-        listaPartidos = new JList<>();
+        //String de prueba
+        String[] partidosArray = {"Partido1" , "Partido2" , "Partido3"};
+        listaPartidos = new JList<String>(partidosArray);
+        listaPartidos.setFixedCellHeight(-1);
         listaConScrollbar = new JScrollPane(listaPartidos);
 
-        add(listaConScrollbar);
+        add(listaPartidos);
     }
 
 }
