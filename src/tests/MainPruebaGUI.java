@@ -1,16 +1,14 @@
 package tests;
 
-import main.ControladorGuiInicial;
-import main.GUI_Equipos;
+import main.Controlador;
 import main.GUI_Inicial;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainPruebaGUI {
     public static void main(String[] args) {
         GUI_Inicial gui = new GUI_Inicial();
-        ControladorGuiInicial ctr = new ControladorGuiInicial(gui);
+        //GUI_Partidos guiPar = new GUI_Partidos();
+        Controlador ctr = new Controlador(gui);
         gui.controlador(ctr);
+        //guiPar.controlador(ctr);
     }
 }

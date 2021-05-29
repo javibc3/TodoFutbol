@@ -2,7 +2,6 @@ package main;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
@@ -129,15 +128,16 @@ public class GUI_Inicial extends  JFrame{
         botonPrensa.setActionCommand("BOTON PRENSA");
     }
     public void LanzarPartidos() {
-        GUI_Partidos gui_partidos = new GUI_Partidos();
-        gui_partidos.setVisible(true);
+        GUI_Partidos gui = new GUI_Partidos();
+        Controlador ctr = new Controlador(gui);
+        gui.controlador(ctr);
+        gui.setVisible(true);
         framePrincipal.dispose();
         System.out.println("Se ha pulsado el boton partidos "
                 + "Abrir GUI_partidos");
     }
     public void LanzarEquipos() {
-        System.out.println("Se ha pulsado el boton equipos "
-                + "Abrir GUI_equipos");
+        System.out.println("Se ha pulsado el boton equipos ");
     }
     public void LanzarForos() {
         System.out.println("Se ha pulsado el boton foros "

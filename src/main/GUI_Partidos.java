@@ -197,5 +197,41 @@ public class GUI_Partidos extends  JFrame{
         }
         return Top3;
     }
+    public void controlador(ActionListener ctr) {
+        //boton partidos
+        botonPartidos.addActionListener(ctr);
+        botonPartidos.setActionCommand("BOTON PAR:PARTIDOS");
+        //boton equipos
+        botonEquipos.addActionListener(ctr);
+        botonEquipos.setActionCommand("BOTON PAR:EQUIPOS");
+        //boton Foros
+        botonForos.addActionListener(ctr);
+        botonForos.setActionCommand("BOTON PAR:FOROS");
+        //boton prensa--goleadores
+        botonPrensa.addActionListener(ctr);
+        botonPrensa.setActionCommand("BOTON PAR:PRENSA");
+    }
+    public void LanzarPartidos() {
+        System.out.println("Se ha pulsado el boton partidos "
+                + "Abrir GUI_partidos");
+    }
+    public void LanzarEquipos() {
+        GUI_Inicial gui = new GUI_Inicial();
+        Controlador ctr = new Controlador(gui);
+        gui.controlador(ctr);
+        gui.setVisible(true);
+        framePartidos.dispose();
+        System.out.println("Se ha pulsado el boton equipos "
+                + "Abrir GUI_equipos");
+    }
+    public void LanzarForos() {
+        System.out.println("Se ha pulsado el boton foros "
+                + "Abrir GUI_Foros");
+    }
+    public void LanzarPrensa() {
+        System.out.println("Se ha pulsado el boton prensa "
+                + "Abrir GUI_prensa");
+    }
+
 
 }
