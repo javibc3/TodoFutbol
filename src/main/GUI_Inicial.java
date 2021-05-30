@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class GUI_Inicial extends  JFrame{
+public class GUI_Inicial extends  JPanel{
 
     private JFrame framePrincipal;
 
@@ -41,12 +41,12 @@ public class GUI_Inicial extends  JFrame{
     List<Equipo> listaEquipos;
 
 
-    public GUI_Inicial(){
+    public GUI_Inicial(JFrame frame){
         // Establecemos una conexión con la BD y obtenemos una lista con los equipos para poder rellenar los botones con los nombres
         BD = ConexionBD.getInstance();
         listaEquipos = BD.getEquipos();
 
-        framePrincipal = new JFrame("TodoFútbol");
+        framePrincipal = frame;
 
         panelContenedor = new JPanel(new GridLayout(3, 1));
         panelArriba = new JPanel(new GridLayout(2, 1));
@@ -122,14 +122,15 @@ public class GUI_Inicial extends  JFrame{
 
 
 
-        framePrincipal.getContentPane().add(panelContenedor);
+        //framePrincipal.getContentPane().
+        add(panelContenedor);
 
 
 
-        framePrincipal.setVisible(true);
-        framePrincipal.setMinimumSize(new Dimension(400,400));
-        framePrincipal.pack();
-        framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        setMinimumSize(new Dimension(400,400));
+        //framePrincipal.pack();
+        //framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public void controlador(ActionListener ctr) {
@@ -165,12 +166,19 @@ public class GUI_Inicial extends  JFrame{
         botonEq6.setActionCommand("EQUIPOS6");
     }
     public void LanzarPartidos() {
+        /*
         GUI_Partidos gui = new GUI_Partidos();
         Controlador ctr = new Controlador(gui);
         gui.controlador(ctr);
-        gui.setVisible(true);
-        framePrincipal.dispose();
-        dispose();
+        removeAll();
+        add(gui);
+        //framePrincipal.dispose();
+        //dispose();
+         */
+
+        CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
+        layout.show(framePrincipal.getContentPane(),"Partidos");
+
         System.out.println("Se ha pulsado el boton Partidos "
                 + "Abrir GUI_Partidos");
     }
@@ -192,16 +200,25 @@ public class GUI_Inicial extends  JFrame{
      a la GUI, pero eso todavia hay que testearlo.
      */
     public void LanzarEquipos1_6(int n) {
-
+        /*
         GUI_Equipos gui = new GUI_Equipos(listaEquipos.get(n-1));
 
         // Si se descomenta la parte anterior, hay que borrar la siguiente linea
         //GUI_Equipos gui = new GUI_Equipos(null);
         ControladorEquipos ctr = new ControladorEquipos(gui);
         gui.ControladorEquipos(ctr);
-        gui.setVisible(true);
-        framePrincipal.dispose();
-        dispose();
+        setVisible(false);
+        remove(this);
+        add(gui);
+        setVisible(true);
+        //gui.setVisible(true);
+        //framePrincipal.dispose();
+        //dispose();
+
+         */
+
+        CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
+        layout.show(framePrincipal.getContentPane(),"Equipos");
 
         System.out.println("Se ha pulsado el boton Equipos" + n + ". Abrir GUI_Equipos" + n);
     }

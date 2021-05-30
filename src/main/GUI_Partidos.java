@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class GUI_Partidos extends  JFrame{
+public class GUI_Partidos extends JPanel{
 
-    private JFrame framePartidos;
+    private JFrame framePrincipal;
 
     JPanel panelContenedor;
 
@@ -39,8 +39,8 @@ public class GUI_Partidos extends  JFrame{
     private JLabel lbClasif2;
     private JLabel lbClasif3;
 
-    public GUI_Partidos(){
-        framePartidos = new JFrame("TodoFútbol");
+    public GUI_Partidos(JFrame frame){
+        framePrincipal = frame;
 
         panelContenedor = new JPanel(new GridLayout(3, 1));
         panelArriba = new JPanel(new GridLayout(2, 1));
@@ -137,12 +137,13 @@ public class GUI_Partidos extends  JFrame{
         panelContenedor.add(panelPartidos);
         panelContenedor.add(panelAbajo);
 
-        framePartidos.getContentPane().add(panelContenedor);
+        //framePartidos.getContentPane()
+        add(panelContenedor);
 
-        framePartidos.setVisible(true);
-        framePartidos.setMinimumSize(new Dimension(400,400));
-        framePartidos.pack();
-        framePartidos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        setMinimumSize(new Dimension(400,400));
+        //framePartidos.pack();
+        //framePartidos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     // Metodo privado para calcular los 3 mejores equipos de la temporada
@@ -223,12 +224,19 @@ public class GUI_Partidos extends  JFrame{
     }
 
     public void LanzarEquipos() {
+        /*
         GUI_Inicial gui = new GUI_Inicial();
         Controlador ctr = new Controlador(gui);
         gui.controlador(ctr);
-        gui.setVisible(true);
-        framePartidos.dispose();
-        dispose();
+        removeAll();
+        add(gui);
+        //framePartidos.dispose();
+        //dispose();
+        */
+
+        CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
+        layout.show(framePrincipal.getContentPane(),"Inicial");
+
         System.out.println("Se ha pulsado el boton Equipos "
                 + "Abrir GUI_Inicial");
     }

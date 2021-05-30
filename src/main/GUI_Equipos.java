@@ -14,9 +14,9 @@ import java.util.List;
  * se delega en la clases {@code GUI_EquiposPartido GUI_EquiposJugadores GUI_EquiposEstadio}.
  * Se hace asi ya que la unica parte que varia entre esas tres es la central.
  */
-public class GUI_Equipos extends JFrame {
+public class GUI_Equipos extends JPanel {
 
-    private JFrame frameEquipos;
+    private JFrame framePrincipal;
 
     JPanel panelContenedor;
 
@@ -43,12 +43,10 @@ public class GUI_Equipos extends JFrame {
 
     //TODO Se deberia crear mas funciones para cambiar la lista de partidos
 
-    public GUI_Equipos(Equipo eq){
+    public GUI_Equipos(Equipo eq,JFrame frame){
 
         this.eq = eq;
-        setLayout(new GridLayout(3,1));
-        setMinimumSize(new Dimension(800,600));
-        setPreferredSize(new Dimension(Math.round((float).33*getWidth()),Math.round((float) .33*getHeight())));
+        setLayout(new GridLayout(1,1));
 
         frameSuperior = new JPanel(new GridLayout(1,4));
 
@@ -90,18 +88,19 @@ public class GUI_Equipos extends JFrame {
         frameInferior.add(botonPrensa);
 
         panelContenedor = new JPanel(new GridLayout(3, 1));
-        frameEquipos = new JFrame("TodoFútbol");
+        framePrincipal = frame;
 
         panelContenedor.add(frameSuperior);
         panelContenedor.add(frameCentral);
         panelContenedor.add(frameInferior);
 
-        frameEquipos.getContentPane().add(panelContenedor);
+        //frameEquipos.getContentPane().
+        add(panelContenedor);
 
-        frameEquipos.setVisible(true);
-        frameEquipos.setMinimumSize(new Dimension(400,400));
-        frameEquipos.pack();
-        frameEquipos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        setMinimumSize(new Dimension(400,400));
+        //frameEquipos.pack();
+        //frameEquipos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     /*
@@ -151,22 +150,30 @@ public class GUI_Equipos extends JFrame {
     // TODO: Añadir metodos a la clase GUI_EquiposJugadores para que maneje una lista de jugadores
 
     public void LanzarJugadores(){
+        /*
         GUI_Equipos gui = new GUI_Equipos(eq);
         ControladorEquipos ctr = new ControladorEquipos(gui);
         gui.ControladorEquipos(ctr);
-        gui.cambiarFrameCentral(new GUI_EquiposJugadores(null));
-        gui.setVisible(true);
+        */
+        frameCentral.setVisible(false);
+        cambiarFrameCentral(new GUI_EquiposJugadores(null));
+        frameCentral.setVisible(true);
+        /*
         frameEquipos.dispose();
         dispose();
+        +/
+         */
         System.out.println("Se ha pulsado el boton Jugadores");
     }
 
     // Metodo que usa la clase ControladorEquipos, lo que hace es crear una ventana con la GUI de GUI_Equipos, pero le
     // añade al panel de en medio el contenido de GUI_EquiposPartido pasandole un parametro null
     public void LanzarPartidos_Eq(){
+        /*
         GUI_Equipos gui = new GUI_Equipos(eq);
         ControladorEquipos ctr = new ControladorEquipos(gui);
         gui.ControladorEquipos(ctr);
+        */
 
         /*
         main.ConexionBD BasDat = main.ConexionBD.getInstance();
@@ -174,10 +181,13 @@ public class GUI_Equipos extends JFrame {
         */
 
         //Si descomentas la parte anterior, cambia null por partidos en la siguiente linea
-        gui.cambiarFrameCentral(new GUI_EquiposPartido(null));
-        gui.setVisible(true);
+        frameCentral.setVisible(false);
+        cambiarFrameCentral(new GUI_EquiposPartido(null));
+        frameCentral.setVisible(true);
+        /*
         frameEquipos.dispose();
         dispose();
+        */
         System.out.println("Se ha pulsado el boton Partido_Equipos");
 
     }
@@ -186,9 +196,12 @@ public class GUI_Equipos extends JFrame {
     // añade al panel de en medio el contenido de GUI_EquiposEstadio
 
     public void LanzarEstadio(){
+        /*
         GUI_Equipos gui = new GUI_Equipos(eq);
         ControladorEquipos ctr = new ControladorEquipos(gui);
         gui.ControladorEquipos(ctr);
+        +/
+         */
 
         /*
         main.ConexionBD BasDat = main.ConexionBD.getInstance();
@@ -196,32 +209,42 @@ public class GUI_Equipos extends JFrame {
         */
 
         //Si descomentas la parte anterior, cambia null por estadio en la siguiente linea
-        gui.cambiarFrameCentral(new GUI_EquiposEstadio("https://imagesvc.timeincapp.com/v3/fan/image?url=https://therealchamps.com/wp-content/uploads/getty-images/2018/12/458769189.jpeg&c=sc&w=1600&h=1132", null));
-        gui.setVisible(true);
-        frameEquipos.dispose();
-        dispose();
+        frameCentral.setVisible(false);
+        cambiarFrameCentral(new GUI_EquiposEstadio("https://imagesvc.timeincapp.com/v3/fan/image?url=https://therealchamps.com/wp-content/uploads/getty-images/2018/12/458769189.jpeg&c=sc&w=1600&h=1132", null));
+        frameCentral.setVisible(true);
+        //frameEquipos.dispose();
+        //dispose();
         System.out.println("Se ha pulsado el boton Estadio");
     }
 
     // Estos metodos son identicos a los de la clase GUI_Inicial y GUI_Partidos
     public void LanzarPartidos() {
+        /*
         GUI_Partidos gui = new GUI_Partidos();
         Controlador ctr = new Controlador(gui);
         gui.controlador(ctr);
         gui.setVisible(true);
-        frameEquipos.dispose();
-        dispose();
+        //frameEquipos.dispose();
+        //dispose();
+         */
+        CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
+        layout.show(framePrincipal.getContentPane(),"Partidos");
         System.out.println("Se ha pulsado el boton Partidos "
                 + "Abrir GUI_Partidos");
     }
 
     public void LanzarEquipos() {
+        /*
         GUI_Inicial gui = new GUI_Inicial();
         Controlador ctr = new Controlador(gui);
         gui.controlador(ctr);
         gui.setVisible(true);
-        frameEquipos.dispose();
-        dispose();
+        //frameEquipos.dispose();
+        //dispose();
+        */
+        CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
+        layout.show(framePrincipal.getContentPane(),"Inicial");
+
         System.out.println("Se ha pulsado el boton Equipos "
                 + "Abrir GUI_Inicial");
     }
