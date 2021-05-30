@@ -255,6 +255,8 @@ public class GUI_Equipos extends JPanel {
         //frameEquipos.dispose();
         //dispose();
         */
+        eq = gui.nullEquipo();
+        cambiarFrameCentral(new GUI_EquiposPartido(null));
         CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
         layout.show(framePrincipal.getContentPane(),"Inicial");
 

@@ -226,4 +226,7 @@ public class GUI_Inicial extends  JPanel{
     public Equipo getEquipo(){
         return eq;
     }
+    public Equipo nullEquipo(){
+        return null;
+    }
 }
