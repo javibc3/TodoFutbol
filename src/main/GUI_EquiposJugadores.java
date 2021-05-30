@@ -31,13 +31,28 @@ public class GUI_EquiposJugadores extends JPanel {
     //TODO Falta la parte de organizar los jugadores en la distintas lista mediante su posicion.
     //TODO Falta tambien metodos para cambiar los diferentes campos de la interfaz
 
+    public JList ListToJlist(List<Jugador> jugadores){
+        JList nuevo = new JList();
+        DefaultListModel modelo = new DefaultListModel();
+        for(int i=0;i<jugadores.size();i++) {
+            modelo.addElement(jugadores.get(i).getNombre());
+        }
+        nuevo.setModel(modelo);
+        return nuevo;
+    }
+
     public GUI_EquiposJugadores(HashMap<String, List<Jugador>> jugadores){
         super(new GridLayout(2,4,5,0));
 
+
         listaPortero = new JList<>();
+        listaPortero = ListToJlist(jugadores.get("POR"));
         listaDefensa = new JList<>();
+        listaDefensa = ListToJlist(jugadores.get("DEF"));
         listaCentral = new JList<>();
+        listaCentral = ListToJlist(jugadores.get("CEN"));
         listaDelantero = new JList<>();
+        listaDelantero = ListToJlist(jugadores.get("DEL"));
 
         listaPorteroScroll = new JScrollPane(listaPortero);
         listaDefensaScroll = new JScrollPane(listaDefensa);

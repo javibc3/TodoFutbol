@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -79,6 +80,7 @@ public class GUI_Equipos extends JPanel {
         frameCentral = new GUI_EquiposPartido(partidos);
         */
         //Si descomentas la parte anterior, quita la linea siguiente
+
         frameCentral = new GUI_EquiposPartido(null);
 
         frameInferior = new JPanel(new GridLayout(1,4));
@@ -161,8 +163,10 @@ public class GUI_Equipos extends JPanel {
         ControladorEquipos ctr = new ControladorEquipos(gui);
         gui.ControladorEquipos(ctr);
         */
+        eq = gui.getEquipo();
+        HashMap<String, List<Jugador>> jugadores=eq.jugadores();
         frameCentral.setVisible(false);
-        cambiarFrameCentral(new GUI_EquiposJugadores(null));
+        cambiarFrameCentral(new GUI_EquiposJugadores(jugadores));
         frameCentral.setVisible(true);
         /*
         frameEquipos.dispose();
@@ -187,8 +191,11 @@ public class GUI_Equipos extends JPanel {
         */
 
         //Si descomentas la parte anterior, cambia null por partidos en la siguiente linea
+        eq = gui.getEquipo();
+        List partidos = baseDatos.getPartidosDeEquipo(eq);
+
         frameCentral.setVisible(false);
-        cambiarFrameCentral(new GUI_EquiposPartido(null));
+        cambiarFrameCentral(new GUI_EquiposPartido(partidos));
         frameCentral.setVisible(true);
         /*
         frameEquipos.dispose();
@@ -240,6 +247,7 @@ public class GUI_Equipos extends JPanel {
         //frameEquipos.dispose();
         //dispose();
          */
+
         CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
         layout.show(framePrincipal.getContentPane(),"Partidos");
         System.out.println("Se ha pulsado el boton Partidos "
