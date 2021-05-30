@@ -19,6 +19,7 @@ public class GUI_Equipos extends JPanel {
     private JFrame framePrincipal;
     private ConexionBD baseDatos = ConexionBD.getInstance();
 
+
     JPanel panelContenedor;
 
     //JPanel intermedios
@@ -41,12 +42,16 @@ public class GUI_Equipos extends JPanel {
     private JButton botonPrensa;
 
     private Equipo eq;
+    private GUI_Inicial gui;
+
 
     //TODO Se deberia crear mas funciones para cambiar la lista de partidos
 
-    public GUI_Equipos(Equipo eq,JFrame frame){
+    public GUI_Equipos(Equipo eq,JFrame frame, GUI_Inicial gui){
 
         this.eq = eq;
+        this.gui = gui;
+
         setLayout(new GridLayout(1,1));
 
         frameSuperior = new JPanel(new GridLayout(1,4));
@@ -212,8 +217,12 @@ public class GUI_Equipos extends JPanel {
 
 
         //Si descomentas la parte anterior, cambia null por estadio en la siguiente linea
+
+        eq = gui.getEquipo();
+        Estadio estadio = baseDatos.getEstadioDeEquipo(eq);
+        System.out.println("Estadio: " + estadio.getNombre());
         frameCentral.setVisible(false);
-        cambiarFrameCentral(new GUI_EquiposEstadio("https://imagesvc.timeincapp.com/v3/fan/image?url=https://therealchamps.com/wp-content/uploads/getty-images/2018/12/458769189.jpeg&c=sc&w=1600&h=1132", null));
+        cambiarFrameCentral(new GUI_EquiposEstadio("https://imagesvc.timeincapp.com/v3/fan/image?url=https://therealchamps.com/wp-content/uploads/getty-images/2018/12/458769189.jpeg&c=sc&w=1600&h=1132", estadio));
         frameCentral.setVisible(true);
         //frameEquipos.dispose();
         //dispose();

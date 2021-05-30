@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Main {
+    private static ConexionBD BD = ConexionBD.getInstance();
+
 
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -26,10 +28,9 @@ public class Main {
         Controlador ctrPartidos = new Controlador(partidos);
         partidos.controlador(ctrPartidos);
 
-        GUI_Equipos equipos = new GUI_Equipos(null,frame);
+        GUI_Equipos equipos = new GUI_Equipos(null, frame, gui);
         ControladorEquipos ctrEquipos = new ControladorEquipos(equipos);
         equipos.ControladorEquipos(ctrEquipos);
-
 
         frame.getContentPane().add(gui,"Inicial");
         frame.getContentPane().add(equipos,"Equipos");

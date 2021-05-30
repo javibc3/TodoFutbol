@@ -10,6 +10,7 @@ import java.util.List;
 public class GUI_Inicial extends  JPanel{
 
     private JFrame framePrincipal;
+    private Equipo eq;
 
     JPanel panelContenedor;
 
@@ -216,10 +217,13 @@ public class GUI_Inicial extends  JPanel{
         //dispose();
 
          */
-
+        eq = BD.getEquipoDeID(n);
         CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
         layout.show(framePrincipal.getContentPane(),"Equipos");
-
         System.out.println("Se ha pulsado el boton Equipos" + n + ". Abrir GUI_Equipos" + n);
+    }
+
+    public Equipo getEquipo(){
+        return eq;
     }
 }
