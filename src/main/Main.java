@@ -26,7 +26,6 @@ public class Main {
         Controlador ctrPartidos = new Controlador(partidos);
         partidos.controlador(ctrPartidos);
 
-
         GUI_Equipos equipos = new GUI_Equipos(null,frame);
         ControladorEquipos ctrEquipos = new ControladorEquipos(equipos);
         equipos.ControladorEquipos(ctrEquipos);

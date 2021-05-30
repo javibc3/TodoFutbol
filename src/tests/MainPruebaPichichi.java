@@ -15,5 +15,6 @@ public class MainPruebaPichichi {
         Pichichi pichichi = new Pichichi();
         System.out.println(pichichi);
 
+
     }
 }

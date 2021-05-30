@@ -143,7 +143,7 @@ public class ConexionBD {
         Estadio estadio = null;
 
         try {
-            PreparedStatement sentencia = connection.prepareStatement("SELECT * FROM ESTADIO WHERE IDEQUIPO = ?");
+            PreparedStatement sentencia = connection.prepareStatement("SELECT * FROM ESTADIOS WHERE ID = ?");
             sentencia.setInt(1,equipo.getId());
             ResultSet rs = sentencia.executeQuery();
             if(rs.isBeforeFirst()){
@@ -263,7 +263,7 @@ public class ConexionBD {
      * @param ideq Identificador del equipo que queremos buscar
      * @return Un {@code Equipo} con el equipo con el identificador ideq o {@code null} si ese identificador no esta asociado a ningun equipo
      */
-    private Equipo getEquipoDeID(int ideq){
+    public Equipo getEquipoDeID(int ideq){
         Equipo equipo = null;
 
         try {

@@ -17,6 +17,7 @@ import java.util.List;
 public class GUI_Equipos extends JPanel {
 
     private JFrame framePrincipal;
+    private ConexionBD baseDatos = ConexionBD.getInstance();
 
     JPanel panelContenedor;
 
@@ -206,7 +207,9 @@ public class GUI_Equipos extends JPanel {
         /*
         main.ConexionBD BasDat = main.ConexionBD.getInstance();
         Estadio estadio = BasDat.getEstadioDeEquipo(eq);
-        */
+
+         */
+
 
         //Si descomentas la parte anterior, cambia null por estadio en la siguiente linea
         frameCentral.setVisible(false);
@@ -215,6 +218,7 @@ public class GUI_Equipos extends JPanel {
         //frameEquipos.dispose();
         //dispose();
         System.out.println("Se ha pulsado el boton Estadio");
+
     }
 
     // Estos metodos son identicos a los de la clase GUI_Inicial y GUI_Partidos
