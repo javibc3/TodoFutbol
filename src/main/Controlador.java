@@ -14,34 +14,21 @@ public class Controlador implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("BOTON PARTIDOS")) {
-            panel.LanzarPartidos();
-        } else if (e.getActionCommand().equals("BOTON EQUIPOS")) {
-            panel.LanzarEquipos();
-        } else if (e.getActionCommand().equals("BOTON PRENSA")) {
-            panel.LanzarPrensa();
-        } else if (e.getActionCommand().equals("BOTON FOROS")) {
-            panel.LanzarForos();
-        } else if (e.getActionCommand().equals("BOTON PAR:EQUIPOS")) {
-            par.LanzarEquipos();
-        } else if (e.getActionCommand().equals("BOTON PAR:PRENSA")) {
-            par.LanzarPrensa();
-        } else if (e.getActionCommand().equals("BOTON PAR:FOROS")) {
-            par.LanzarForos();
-        } else if (e.getActionCommand().equals("BOTON PAR:PARTIDOS")) {
-            par.LanzarPartidos();
-        } else if (e.getActionCommand().equals("EQUIPOS1")) {
-            panel.LanzarEquipos1_6(1);
-        } else if (e.getActionCommand().equals("EQUIPOS2")) {
-            panel.LanzarEquipos1_6(2);
-        } else if (e.getActionCommand().equals("EQUIPOS3")) {
-            panel.LanzarEquipos1_6(3);
-        } else if (e.getActionCommand().equals("EQUIPOS4")) {
-            panel.LanzarEquipos1_6(4);
-        } else if (e.getActionCommand().equals("EQUIPOS5")) {
-            panel.LanzarEquipos1_6(5);
-        } else if (e.getActionCommand().equals("EQUIPOS6")) {
-            panel.LanzarEquipos1_6(6);
+        switch (e.getActionCommand()) {
+            case "BOTON PARTIDOS" -> panel.LanzarPartidos();
+            case "BOTON EQUIPOS" -> panel.LanzarEquipos();
+            case "BOTON PRENSA" -> panel.LanzarPrensa();
+            case "BOTON FOROS" -> panel.LanzarForos();
+            case "BOTON PAR:EQUIPOS" -> par.LanzarEquipos();
+            case "BOTON PAR:PRENSA" -> par.LanzarPrensa();
+            case "BOTON PAR:FOROS" -> par.LanzarForos();
+            case "BOTON PAR:PARTIDOS" -> par.LanzarPartidos();
+            case "EQUIPOS1" -> panel.LanzarEquipos1_6(1);
+            case "EQUIPOS2" -> panel.LanzarEquipos1_6(2);
+            case "EQUIPOS3" -> panel.LanzarEquipos1_6(3);
+            case "EQUIPOS4" -> panel.LanzarEquipos1_6(4);
+            case "EQUIPOS5" -> panel.LanzarEquipos1_6(5);
+            case "EQUIPOS6" -> panel.LanzarEquipos1_6(6);
         }
     }
 }

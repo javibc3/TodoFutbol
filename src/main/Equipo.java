@@ -55,18 +55,11 @@ public class Equipo {
 
         for(int i = 0; i < jugadores.size(); ++i) {
 
-            switch(jugadores.get(i).getPosicion()) {
-                case "POR":
-                    POR.add(jugadores.get(i));
-                    break;
-                case "DEF":
-                    DEF.add(jugadores.get(i));
-                    break;
-                case "CEN":
-                    CEN.add(jugadores.get(i));
-                    break;
-                case "DEL":
-                    DEL.add(jugadores.get(i));
+            switch (jugadores.get(i).getPosicion()) {
+                case "POR" -> POR.add(jugadores.get(i));
+                case "DEF" -> DEF.add(jugadores.get(i));
+                case "CEN" -> CEN.add(jugadores.get(i));
+                case "DEL" -> DEL.add(jugadores.get(i));
             }
         }
 
@@ -90,7 +83,7 @@ public class Equipo {
     public List<Jugador> ordenaJugadoresDorsal(List<Jugador> jugadores) {
         List<Jugador> listaOrdenada = new ArrayList<>();
         Jugador jug = new Jugador(0, null, null, null, 0, 0, 0);
-        int idx = -1, menor = 100, size=jugadores.size();
+        int idx = -1, menor, size=jugadores.size();
 
         for(int i = 0; i < size; ++i) {
             menor=100;

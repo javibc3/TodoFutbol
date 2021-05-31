@@ -1,11 +1,8 @@
 package main;
 
-import javax.print.DocFlavor;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 
@@ -76,7 +73,7 @@ public class GUI_Equipos extends JPanel {
         subpanelMenu= new JPanel(new GridLayout(1, 4));
         panelCentral = new GUI_EquiposPartido(null);
 
-        Icon iconoRetroceder = null;
+        Icon iconoRetroceder;
 
         iconoRetroceder = new ImageIcon("src/Imagenes/flecha_atras.jpg");
 
@@ -221,7 +218,7 @@ public class GUI_Equipos extends JPanel {
 
         //Si descomentas la parte anterior, cambia null por partidos en la siguiente linea
         eq = gui.getEquipo();
-        List partidos = baseDatos.getPartidosDeEquipo(eq);
+        List<Partidos> partidos = baseDatos.getPartidosDeEquipo(eq);
 
         panelCentral.setVisible(false);
         cambiarFrameCentral(new GUI_EquiposPartido(partidos));

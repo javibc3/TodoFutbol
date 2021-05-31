@@ -11,20 +11,14 @@ public class ControladorEquipos implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("JUGADORES")) {
-            EquiposPPal.LanzarJugadores();
-        } else if (e.getActionCommand().equals("ESTADIO")) {
-            EquiposPPal.LanzarEstadio();
-        } else if (e.getActionCommand().equals("PARTIDOS_EQ")) {
-            EquiposPPal.LanzarPartidos_Eq();
-        } else if (e.getActionCommand().equals("BOTON PARTIDOS")) {
-            EquiposPPal.LanzarPartidos();
-        } else if (e.getActionCommand().equals("BOTON EQUIPOS")) {
-            EquiposPPal.LanzarEquipos();
-        } else if (e.getActionCommand().equals("BOTON PRENSA")) {
-            EquiposPPal.LanzarPrensa();
-        } else if (e.getActionCommand().equals("BOTON FOROS")) {
-            EquiposPPal.LanzarForos();
+        switch (e.getActionCommand()) {
+            case "JUGADORES" -> EquiposPPal.LanzarJugadores();
+            case "ESTADIO" -> EquiposPPal.LanzarEstadio();
+            case "PARTIDOS_EQ" -> EquiposPPal.LanzarPartidos_Eq();
+            case "BOTON PARTIDOS" -> EquiposPPal.LanzarPartidos();
+            case "BOTON EQUIPOS" -> EquiposPPal.LanzarEquipos();
+            case "BOTON PRENSA" -> EquiposPPal.LanzarPrensa();
+            case "BOTON FOROS" -> EquiposPPal.LanzarForos();
         }
     }
 }
