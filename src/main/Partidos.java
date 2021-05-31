@@ -7,10 +7,10 @@ public class Partidos {
     private Equipo equipoLocal;
     private Equipo equipoVisitante;
     private String colegiados;
-    private Date fecha;
+    private String fecha;
     private String resultado;
 
-    public Partidos(int idPartido, Equipo equipoLocal, Equipo equipoVisitante, String colegiados, Date fecha, String resultado) {
+    public Partidos(int idPartido, Equipo equipoLocal, Equipo equipoVisitante, String colegiados, String fecha, String resultado) {
         this.idPartido = idPartido;
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
@@ -59,11 +59,11 @@ public class Partidos {
         this.colegiados = colegiados;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

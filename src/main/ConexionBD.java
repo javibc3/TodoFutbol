@@ -2,6 +2,7 @@ package main;
 
 import java.sql.*;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -36,6 +37,13 @@ public class ConexionBD {
             instanciaConexion = new ConexionBD();
         }
         return instanciaConexion;
+    }
+
+    public String modificarFecha(String fecha){
+        String[]fechaCortada=fecha.split(" ");
+        String[] dia= fechaCortada[0].split("-");
+        String[] hora=fechaCortada[1].split(":");
+        return (dia[2]+"/"+dia[1]+"/"+dia[0]+"   "+hora[0]+":"+hora[1]);
     }
 
     /**
@@ -217,7 +225,10 @@ public class ConexionBD {
                     Equipo equipoLocal = getEquipoDeID(rs.getInt(2));
                     Equipo equipoVisitante = getEquipoDeID(rs.getInt(3));
                     String colegiados = rs.getString(4);
-                    Date fecha = rs.getDate(5);
+
+                    String fecha=rs.getString(5);
+                    fecha=modificarFecha(fecha);
+
                     String resultado = rs.getString(6);
                     listaPartidos.add(new Partidos(id, equipoLocal, equipoVisitante, colegiados, fecha, resultado));
                 }
@@ -246,7 +257,10 @@ public class ConexionBD {
                     Equipo equipoLocal = getEquipoDeID(rs.getInt(2));
                     Equipo equipoVisitante = getEquipoDeID(rs.getInt(3));
                     String colegiados = rs.getString(4);
-                    Date fecha = rs.getDate(5);
+
+                    String fecha=rs.getString(5);
+                    fecha=modificarFecha(fecha);
+
                     String resultado = rs.getString(6);
                     listaPartidos.add(new Partidos(id, equipoLocal, equipoVisitante, colegiados, fecha, resultado));
                 }

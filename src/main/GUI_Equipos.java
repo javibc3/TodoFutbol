@@ -24,17 +24,28 @@ public class GUI_Equipos extends JPanel {
     JPanel panelContenedor;
 
     //JPanel intermedios
-    private JPanel frameSuperior;
-    private JPanel frameInferior;
-    private JPanel frameCentral;
+//    private JPanel frameSuperior;
+//    private JPanel frameInferior;
+//    private JPanel frameCentral;
+
+    private JPanel panelArriba;
+    private JPanel panelArriba2;
+    private JPanel subpanelBotones;
+    private JPanel subpanelEnBlanco1;
+
+    private JPanel panelCentral;
+
+    private JPanel panelAbajo;
+    private JPanel subpanelEnBlanco2;
+    private JPanel subpanelMenu;
+
+    private JLabel textoBlanco;
 
     //Botonoes de la parte superior
     private JButton botonRetroceder;
     private JButton botonPartidoEquipo;
     private JButton botonJugadores;
     private JButton botonEstadio;
-
-
 
     //Botones de la parte inferior
     private JButton botonEquipos;
@@ -53,26 +64,38 @@ public class GUI_Equipos extends JPanel {
         this.eq = eq;
         this.gui = gui;
 
-        setLayout(new GridLayout(1,1));
+        setLayout(new GridLayout(1,2));
 
-        frameSuperior = new JPanel(new GridLayout(1,4));
+        panelArriba = new JPanel(new GridLayout(1,1));
+        panelArriba2 = new JPanel(new GridLayout(2,1));
+        subpanelBotones= new JPanel(new GridLayout(1, 4));
+        panelAbajo = new JPanel(new GridLayout(2,1));
+        subpanelEnBlanco1 = new JPanel(new GridLayout(1, 1));
+        subpanelEnBlanco2 = new JPanel(new GridLayout(1, 1));
+        panelContenedor = new JPanel(new GridLayout(4, 1));
+        subpanelMenu= new JPanel(new GridLayout(1, 4));
+        panelCentral = new GUI_EquiposPartido(null);
 
         Icon iconoRetroceder = null;
-        try {
-            iconoRetroceder = new ImageIcon(new URL("https://image.freepik.com/iconos-gratis/flecha-atras-izquierda_318-74925.jpg"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+
+        iconoRetroceder = new ImageIcon("src/Imagenes/flecha_atras.jpg");
 
         botonRetroceder = new JButton(iconoRetroceder);
         botonPartidoEquipo = new JButton("Partidos");
         botonJugadores = new JButton("Jugadores");
         botonEstadio = new JButton("Estadio");
 
-        frameSuperior.add(botonRetroceder);
-        frameSuperior.add(botonPartidoEquipo);
-        frameSuperior.add(botonJugadores);
-        frameSuperior.add(botonEstadio);
+        textoBlanco = new JLabel("TodoFútbol");
+        textoBlanco.setHorizontalAlignment(SwingConstants.CENTER);
+        textoBlanco.setVerticalAlignment(SwingConstants.BOTTOM);
+        textoBlanco.setFont(new Font("Serif", Font.PLAIN, 50));
+
+        subpanelEnBlanco1.add(textoBlanco);
+
+        subpanelBotones.add(botonRetroceder);
+        subpanelBotones.add(botonPartidoEquipo);
+        subpanelBotones.add(botonJugadores);
+        subpanelBotones.add(botonEstadio);
 
         /*
         main.ConexionBD BD = main.ConexionBD.getInstance();
@@ -81,26 +104,32 @@ public class GUI_Equipos extends JPanel {
         */
         //Si descomentas la parte anterior, quita la linea siguiente
 
-        frameCentral = new GUI_EquiposPartido(null);
-
-        frameInferior = new JPanel(new GridLayout(1,4));
 
         botonEquipos = new JButton("Equipos");
         botonPartidos = new JButton("Partidos");
         botonForos = new JButton("Foros");
         botonPrensa = new JButton("Prensa");
 
-        frameInferior.add(botonEquipos);
-        frameInferior.add(botonPartidos);
-        frameInferior.add(botonForos);
-        frameInferior.add(botonPrensa);
 
-        panelContenedor = new JPanel(new GridLayout(3, 1));
+        subpanelMenu.add(botonEquipos);
+        subpanelMenu.add(botonPartidos);
+        subpanelMenu.add(botonForos);
+        subpanelMenu.add(botonPrensa);
+
+
         framePrincipal = frame;
 
-        panelContenedor.add(frameSuperior);
-        panelContenedor.add(frameCentral);
-        panelContenedor.add(frameInferior);
+        panelArriba.add(subpanelEnBlanco1);
+        panelArriba2.add(subpanelEnBlanco2);
+        panelArriba2.add(subpanelBotones);
+
+        //panelAbajo.add(subpanelEnBlanco1);
+        panelAbajo.add(subpanelMenu);
+
+        panelContenedor.add(panelArriba);
+        panelContenedor.add(panelArriba2);
+        panelContenedor.add(panelCentral);
+        panelContenedor.add(panelAbajo);
 
         //frameEquipos.getContentPane().
         add(panelContenedor);
@@ -118,11 +147,11 @@ public class GUI_Equipos extends JPanel {
      de en medio, el panel nuevo se añade abajo, y el que estaba abajo se va al medio.
     */
     public void cambiarFrameCentral (JPanel nuevaFrameCentral) {
-        panelContenedor.remove(frameCentral);
-        panelContenedor.remove(frameInferior);
-        frameCentral = nuevaFrameCentral;
-        panelContenedor.add(frameCentral);
-        panelContenedor.add(frameInferior);
+        panelContenedor.remove(panelCentral);
+        panelContenedor.remove(panelCentral);
+        panelCentral = nuevaFrameCentral;
+        panelContenedor.add(panelCentral);
+        panelContenedor.add(panelAbajo);
     }
 
     // Controlador de la clase, maneja tambien los botones de la barra inferior
@@ -165,9 +194,9 @@ public class GUI_Equipos extends JPanel {
         */
         eq = gui.getEquipo();
         HashMap<String, List<Jugador>> jugadores=eq.jugadores();
-        frameCentral.setVisible(false);
+        panelCentral.setVisible(false);
         cambiarFrameCentral(new GUI_EquiposJugadores(jugadores));
-        frameCentral.setVisible(true);
+        panelCentral.setVisible(true);
         /*
         frameEquipos.dispose();
         dispose();
@@ -194,9 +223,9 @@ public class GUI_Equipos extends JPanel {
         eq = gui.getEquipo();
         List partidos = baseDatos.getPartidosDeEquipo(eq);
 
-        frameCentral.setVisible(false);
+        panelCentral.setVisible(false);
         cambiarFrameCentral(new GUI_EquiposPartido(partidos));
-        frameCentral.setVisible(true);
+        panelCentral.setVisible(true);
         /*
         frameEquipos.dispose();
         dispose();
@@ -228,9 +257,9 @@ public class GUI_Equipos extends JPanel {
         eq = gui.getEquipo();
         Estadio estadio = baseDatos.getEstadioDeEquipo(eq);
         System.out.println("Estadio: " + estadio.getNombre());
-        frameCentral.setVisible(false);
+        panelCentral.setVisible(false);
         cambiarFrameCentral(new GUI_EquiposEstadio("https://imagesvc.timeincapp.com/v3/fan/image?url=https://therealchamps.com/wp-content/uploads/getty-images/2018/12/458769189.jpeg&c=sc&w=1600&h=1132", estadio));
-        frameCentral.setVisible(true);
+        panelCentral.setVisible(true);
         //frameEquipos.dispose();
         //dispose();
         System.out.println("Se ha pulsado el boton Estadio");
