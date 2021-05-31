@@ -1,4 +1,7 @@
-package main;
+package Controladores;
+
+import GUI.GUI_Inicial;
+import GUI.GUI_Partidos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,9 +11,13 @@ public class Controlador implements ActionListener {
     private GUI_Inicial panel;
     private GUI_Partidos par;
 
-    public Controlador(GUI_Inicial ppal) { this.panel = ppal; }
+    public Controlador(GUI_Inicial ppal) {
+        this.panel = ppal;
+    }
 
-    public Controlador(GUI_Partidos par) { this.par = par; }
+    public Controlador(GUI_Partidos par) {
+        this.par = par;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

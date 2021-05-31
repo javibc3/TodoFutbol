@@ -8,10 +8,10 @@ public class Equipo {
     private int id;
     private String nombre;
     private String escudo;
-    private ConexionBD baseDatos = ConexionBD.getInstance();
+    private final ConexionBD baseDatos = ConexionBD.getInstance();
     private HashMap<String, List<Jugador>> jugadores;
 
-    public Equipo(int id, String nom, String Esc){
+    public Equipo(int id, String nom, String Esc) {
         this.id = id;
         nombre = nom;
         escudo = Esc;
@@ -21,20 +21,20 @@ public class Equipo {
         return id;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getEscudo() {
-        return escudo;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getEscudo() {
+        return escudo;
     }
 
     public void setEscudo(String escudo) {
@@ -53,7 +53,7 @@ public class Equipo {
         List<Jugador> CEN = new ArrayList<>();
         List<Jugador> DEL = new ArrayList<>();
 
-        for(int i = 0; i < jugadores.size(); ++i) {
+        for (int i = 0; i < jugadores.size(); ++i) {
 
             switch (jugadores.get(i).getPosicion()) {
                 case "POR" -> POR.add(jugadores.get(i));
@@ -83,11 +83,11 @@ public class Equipo {
     public List<Jugador> ordenaJugadoresDorsal(List<Jugador> jugadores) {
         List<Jugador> listaOrdenada = new ArrayList<>();
         Jugador jug = new Jugador(0, null, null, null, 0, 0, 0);
-        int idx = -1, menor, size=jugadores.size();
+        int idx = -1, menor, size = jugadores.size();
 
-        for(int i = 0; i < size; ++i) {
-            menor=100;
-            for(int j = 0; j < jugadores.size(); ++j) {
+        for (int i = 0; i < size; ++i) {
+            menor = 100;
+            for (int j = 0; j < jugadores.size(); ++j) {
                 if ((jugadores.get(j)).getDorsal() < menor) {
                     menor = (jugadores.get(j)).getDorsal();
                     jug = jugadores.get(j);

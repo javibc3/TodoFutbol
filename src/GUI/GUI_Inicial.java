@@ -1,48 +1,42 @@
-package main;
+package GUI;
+
+import main.ConexionBD;
+import main.Equipo;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class GUI_Inicial extends  JPanel{
-
-    private JFrame framePrincipal;
-    private Equipo eq;
+public class GUI_Inicial extends JPanel {
 
     JPanel panelContenedor;
-
-    private JPanel panelArriba;
-    private JPanel subpanelTitulo;
-    private JPanel subpanelEnBlanco1;
-
-    private JPanel panelBotones;
-
-    private JPanel panelAbajo;
-    private JPanel subpanelEnBlanco2;
-    private JPanel subpanelMenu;
-
-
-    private JLabel labelTitulo;
-
-    private JButton botonEq1;
-    private JButton botonEq2;
-    private JButton botonEq3;
-    private JButton botonEq4;
-    private JButton botonEq5;
-    private JButton botonEq6;
-    private JButton botonEquipos;
-    private JButton botonPartidos;
-    private JButton botonForos;
-    private JButton botonPrensa;
-
     ConexionBD BD;
     List<Equipo> listaEquipos;
+    private final JFrame framePrincipal;
+    private Equipo eq;
+    private final JPanel panelArriba;
+    private final JPanel subpanelTitulo;
+    private final JPanel subpanelEnBlanco1;
+    private final JPanel panelBotones;
+    private final JPanel panelAbajo;
+    private final JPanel subpanelEnBlanco2;
+    private final JPanel subpanelMenu;
+    private final JLabel labelTitulo;
+    private final JButton botonEq1;
+    private final JButton botonEq2;
+    private final JButton botonEq3;
+    private final JButton botonEq4;
+    private final JButton botonEq5;
+    private final JButton botonEq6;
+    private final JButton botonEquipos;
+    private final JButton botonPartidos;
+    private final JButton botonForos;
+    private final JButton botonPrensa;
 
 
-    public GUI_Inicial(JFrame frame){
+    public GUI_Inicial(JFrame frame) {
         // Establecemos una conexión con la BD y obtenemos una lista con los equipos para poder rellenar los botones con los nombres
         BD = ConexionBD.getInstance();
         listaEquipos = BD.getEquipos();
@@ -57,7 +51,6 @@ public class GUI_Inicial extends  JPanel{
         panelAbajo = new JPanel(new GridLayout(2, 1));
         subpanelEnBlanco2 = new JPanel(new GridLayout(1, 1));
         subpanelMenu = new JPanel(new GridLayout(1, 4));
-
 
 
         labelTitulo = new JLabel("TodoFútbol");
@@ -122,14 +115,12 @@ public class GUI_Inicial extends  JPanel{
         panelContenedor.add(panelAbajo);
 
 
-
         //framePrincipal.getContentPane().
         add(panelContenedor);
 
 
-
         setVisible(true);
-        setMinimumSize(new Dimension(400,400));
+        setMinimumSize(new Dimension(400, 400));
         //framePrincipal.pack();
         //framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -166,6 +157,7 @@ public class GUI_Inicial extends  JPanel{
         botonEq6.addActionListener(ctr);
         botonEq6.setActionCommand("EQUIPOS6");
     }
+
     public void LanzarPartidos() {
         /*
         GUI_Partidos gui = new GUI_Partidos();
@@ -178,18 +170,21 @@ public class GUI_Inicial extends  JPanel{
          */
 
         CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
-        layout.show(framePrincipal.getContentPane(),"Partidos");
+        layout.show(framePrincipal.getContentPane(), "Partidos");
 
         System.out.println("Se ha pulsado el boton Partidos "
                 + "Abrir GUI_Partidos");
     }
+
     public void LanzarEquipos() {
         System.out.println("Se ha pulsado el boton equipos ");
     }
+
     public void LanzarForos() {
         System.out.println("Se ha pulsado el boton Foros "
                 + "Abrir GUI_Foros");
     }
+
     public void LanzarPrensa() {
         System.out.println("Se ha pulsado el boton Prensa "
                 + "Abrir GUI_Prensa");
@@ -219,14 +214,15 @@ public class GUI_Inicial extends  JPanel{
          */
         eq = BD.getEquipoDeID(n);
         CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
-        layout.show(framePrincipal.getContentPane(),"Equipos");
+        layout.show(framePrincipal.getContentPane(), "Equipos");
         System.out.println("Se ha pulsado el boton Equipos" + n + ". Abrir GUI_Equipos" + n);
     }
 
-    public Equipo getEquipo(){
+    public Equipo getEquipo() {
         return eq;
     }
-    public Equipo nullEquipo(){
+
+    public Equipo nullEquipo() {
         return null;
     }
 }

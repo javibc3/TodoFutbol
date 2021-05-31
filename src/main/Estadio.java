@@ -1,7 +1,5 @@
 package main;
 
-import java.sql.Date;
-
 public class Estadio {
     private int idestadio;
     private String nombre;

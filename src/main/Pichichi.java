@@ -1,14 +1,12 @@
 package main;
 
-import java.util.HashMap;
 import java.util.SortedMap;
-import java.util.StringJoiner;
 
 public class Pichichi {
     private String nombre;
     private int numGoles;
-    private SortedMap<String, Integer> goleadores;
-    private ConexionBD baseDatos = ConexionBD.getInstance();
+    private final SortedMap<String, Integer> goleadores;
+    private final ConexionBD baseDatos = ConexionBD.getInstance();
 
     public Pichichi() {
         goleadores = baseDatos.getGoleadores();
@@ -27,7 +25,7 @@ public class Pichichi {
         StringBuilder sb = new StringBuilder();
         int num;
         sb.append("Maximos Goleadores:\n");
-        for(String nombre: goleadores.keySet()) {
+        for (String nombre : goleadores.keySet()) {
             num = goleadores.get(nombre);
             sb.append("Jugador: " + nombre + ", Numero de goles: " + num + "\n");
         }

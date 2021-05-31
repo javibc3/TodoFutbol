@@ -1,7 +1,5 @@
 package main;
 
-import java.sql.Date;
-
 public class Partidos {
     private int idPartido;
     private Equipo equipoLocal;

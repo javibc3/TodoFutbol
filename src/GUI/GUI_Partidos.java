@@ -1,45 +1,45 @@
-package main;
+package GUI;
+
+import main.Equipo;
+import main.Partidos;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class GUI_Partidos extends JPanel{
-
-    private JFrame framePrincipal;
+public class GUI_Partidos extends JPanel {
 
     JPanel panelContenedor;
+    private final JFrame framePrincipal;
+    private final JPanel panelArriba;
+    private final JPanel subpanelTitulo;
+    private final JPanel subpanelEnBlanco1;
 
-    private JPanel panelArriba;
-    private JPanel subpanelTitulo;
-    private JPanel subpanelEnBlanco1;
+    private final JPanel panelPartidos;
 
-    private JPanel panelPartidos;
-
-    private JPanel panelAbajo;
-    private JPanel subpanelEnBlanco2;
-    private JPanel subpanelMenu;
+    private final JPanel panelAbajo;
+    private final JPanel subpanelEnBlanco2;
+    private final JPanel subpanelMenu;
 
 
-    private JLabel labelTitulo;
-    private JButton botonEquipos;
-    private JButton botonPartidos;
-    private JButton botonForos;
-    private JButton botonPrensa;
-    private JLabel lblClasificacion;
-    private JLabel lblPartidos_1;
-    private JLabel lbPartido1;
-    private JLabel lbPartido2;
-    private JLabel lbPartido3;
-    private JLabel lbClasif1;
-    private JLabel lbClasif2;
-    private JLabel lbClasif3;
+    private final JLabel labelTitulo;
+    private final JButton botonEquipos;
+    private final JButton botonPartidos;
+    private final JButton botonForos;
+    private final JButton botonPrensa;
+    private final JLabel lblClasificacion;
+    private final JLabel lblPartidos_1;
+    private final JLabel lbPartido1;
+    private final JLabel lbPartido2;
+    private final JLabel lbPartido3;
+    private final JLabel lbClasif1;
+    private final JLabel lbClasif2;
+    private final JLabel lbClasif3;
 
-    public GUI_Partidos(JFrame frame){
+    public GUI_Partidos(JFrame frame) {
         framePrincipal = frame;
 
         panelContenedor = new JPanel(new GridLayout(3, 1));
@@ -52,14 +52,12 @@ public class GUI_Partidos extends JPanel{
         subpanelMenu = new JPanel(new GridLayout(1, 4));
 
 
-
         labelTitulo = new JLabel("TodoFútbol");
         labelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         labelTitulo.setVerticalAlignment(SwingConstants.BOTTOM);
         labelTitulo.setFont(new Font("Serif", Font.PLAIN, 50));
 
         subpanelTitulo.add(labelTitulo);
-
 
 
         botonEquipos = new JButton("Equipos");
@@ -141,7 +139,7 @@ public class GUI_Partidos extends JPanel{
         add(panelContenedor);
 
         setVisible(true);
-        setMinimumSize(new Dimension(400,400));
+        setMinimumSize(new Dimension(400, 400));
         //framePartidos.pack();
         //framePartidos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -156,44 +154,45 @@ public class GUI_Partidos extends JPanel{
         while (Equipos.size() > n) {  // Recorre todos los equipos de la lista
             resultadoTotal = 0;  // Goles totales de todos los partidos del equipo
             Partidos = BD.getPartidosDeEquipo(Equipos.get(n));  // Cogemos de la BD todos los partidos del equipo que este en el bucle en este momento
-            while(Partidos.size() > i) {  // Recorre todos los partidos de la lista
-                if(Equipos.get(n).equals(Partidos.get(i).getEquipoLocal())){  // Si el equipo es el local, se coge el primer caracter de resultados, y se pasa a int
+            while (Partidos.size() > i) {  // Recorre todos los partidos de la lista
+                if (Equipos.get(n).equals(Partidos.get(i).getEquipoLocal())) {  // Si el equipo es el local, se coge el primer caracter de resultados, y se pasa a int
                     resultadoTotal = resultadoTotal + Character.getNumericValue(Partidos.get(i).getResultado().charAt(0));
-                } else resultadoTotal = resultadoTotal + Character.getNumericValue(Partidos.get(i).getResultado().charAt(2)); // Si el equipo es visitante, se coge el tercer caracter de resultados
+                } else
+                    resultadoTotal = resultadoTotal + Character.getNumericValue(Partidos.get(i).getResultado().charAt(2)); // Si el equipo es visitante, se coge el tercer caracter de resultados
                 i++;
             }
-            if(n < 3){ // Si la lista todavia no tiene 3 elementos, mete el equipo sin hacer comprobaciones
+            if (n < 3) { // Si la lista todavia no tiene 3 elementos, mete el equipo sin hacer comprobaciones
                 Top3.add(Equipos.get(n));
-                if(n == 0){
+                if (n == 0) {
                     res1 = resultadoTotal;  // res1 es el resultado total del primer equipo del Top3, res2, del segundo, y res3, del tercero
-                } else if (n == 1){
+                } else if (n == 1) {
                     res2 = resultadoTotal;
                 } else res3 = resultadoTotal;
-            } else if(resultadoTotal > res1) {  // Si hay 3 o mas equipos en la lista, compara los resultados
+            } else if (resultadoTotal > res1) {  // Si hay 3 o mas equipos en la lista, compara los resultados
                 Top3.remove(0);  // Si el resultado del equipo de la lista es menor que el del equipo del bucle actual, se sustituye
                 Top3.add(Equipos.get(n));
-            } else if(resultadoTotal > res2) {
+            } else if (resultadoTotal > res2) {
                 Top3.remove(1);
                 Top3.add(Equipos.get(n));
-            } else if(resultadoTotal > res3) {
+            } else if (resultadoTotal > res3) {
                 Top3.remove(2);
                 Top3.add(Equipos.get(n));
             }
             n++;
         }
         // Finalmente, se ordena la lista
-        if(res1 < res2) {  // Si el primer equipo tiene peores resultados que el segundo, se intercambian
+        if (res1 < res2) {  // Si el primer equipo tiene peores resultados que el segundo, se intercambian
             Equipos.add(0, Equipos.get(1));
             int resAux = res1;  // Y se intercambian los resultados tambien
             res1 = res2;
             res2 = resAux;
         }
-        if(res2 < res3) {  // Si el segundo equipo tiene peores resultados que el tercero, se intercambian
+        if (res2 < res3) {  // Si el segundo equipo tiene peores resultados que el tercero, se intercambian
             Equipos.add(1, Equipos.get(2));
             int resAux = res2;
             res2 = res3;
             res3 = resAux;
-            if(res1 < res2) {  // Si el segundo y el tercer equipo se han intercambiado, se compara el primero con el segundo otra vez
+            if (res1 < res2) {  // Si el segundo y el tercer equipo se han intercambiado, se compara el primero con el segundo otra vez
                 Equipos.add(0, Equipos.get(1));
                 resAux = res1;
                 res1 = res2;
@@ -235,7 +234,7 @@ public class GUI_Partidos extends JPanel{
         */
 
         CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
-        layout.show(framePrincipal.getContentPane(),"Inicial");
+        layout.show(framePrincipal.getContentPane(), "Inicial");
 
         System.out.println("Se ha pulsado el boton Equipos "
                 + "Abrir GUI_Inicial");

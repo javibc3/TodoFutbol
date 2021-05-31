@@ -1,4 +1,6 @@
-package main;
+package GUI;
+
+import main.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,63 +16,60 @@ import java.util.List;
  */
 public class GUI_Equipos extends JPanel {
 
-    private JFrame framePrincipal;
-    private ConexionBD baseDatos = ConexionBD.getInstance();
-
-
     JPanel panelContenedor;
+    private final JFrame framePrincipal;
+    private final ConexionBD baseDatos = ConexionBD.getInstance();
 
     //JPanel intermedios
 //    private JPanel frameSuperior;
 //    private JPanel frameInferior;
 //    private JPanel frameCentral;
-
-    private JPanel panelArriba;
-    private JPanel panelArriba2;
-    private JPanel subpanelBotones;
-    private JPanel subpanelEnBlanco1;
+    private final JPanel panelArriba;
+    private final JPanel panelArriba2;
+    private final JPanel subpanelBotones;
+    private final JPanel subpanelEnBlanco1;
 
     private JPanel panelCentral;
 
-    private JPanel panelAbajo;
-    private JPanel subpanelEnBlanco2;
-    private JPanel subpanelMenu;
+    private final JPanel panelAbajo;
+    private final JPanel subpanelEnBlanco2;
+    private final JPanel subpanelMenu;
 
-    private JLabel textoBlanco;
+    private final JLabel textoBlanco;
 
     //Botonoes de la parte superior
-    private JButton botonRetroceder;
-    private JButton botonPartidoEquipo;
-    private JButton botonJugadores;
-    private JButton botonEstadio;
+    private final JButton botonRetroceder;
+    private final JButton botonPartidoEquipo;
+    private final JButton botonJugadores;
+    private final JButton botonEstadio;
 
     //Botones de la parte inferior
-    private JButton botonEquipos;
-    private JButton botonPartidos;
-    private JButton botonForos;
-    private JButton botonPrensa;
+    private final JButton botonEquipos;
+    private final JButton botonPartidos;
+    private final JButton botonForos;
+    private final JButton botonPrensa;
 
     private Equipo eq;
-    private GUI_Inicial gui;
+    private final GUI_Inicial gui;
 
 
     //TODO Se deberia crear mas funciones para cambiar la lista de partidos
 
-    public GUI_Equipos(Equipo eq,JFrame frame, GUI_Inicial gui){
+    public GUI_Equipos(Equipo eq, JFrame frame, GUI_Inicial gui) {
 
         this.eq = eq;
         this.gui = gui;
 
-        setLayout(new GridLayout(1,2));
+        setLayout(new GridLayout(1, 2));
 
-        panelArriba = new JPanel(new GridLayout(1,1));
-        panelArriba2 = new JPanel(new GridLayout(2,1));
-        subpanelBotones= new JPanel(new GridLayout(1, 4));
-        panelAbajo = new JPanel(new GridLayout(2,1));
+        panelArriba = new JPanel(new GridLayout(1, 1));
+        panelArriba2 = new JPanel(new GridLayout(2, 1));
+        subpanelBotones = new JPanel(new GridLayout(1, 4));
+        panelAbajo = new JPanel(new GridLayout(2, 1));
         subpanelEnBlanco1 = new JPanel(new GridLayout(1, 1));
         subpanelEnBlanco2 = new JPanel(new GridLayout(1, 1));
         panelContenedor = new JPanel(new GridLayout(4, 1));
-        subpanelMenu= new JPanel(new GridLayout(1, 4));
+        subpanelMenu = new JPanel(new GridLayout(1, 4));
         panelCentral = new GUI_EquiposPartido(null);
 
         Icon iconoRetroceder;
@@ -132,7 +131,7 @@ public class GUI_Equipos extends JPanel {
         add(panelContenedor);
 
         setVisible(true);
-        setMinimumSize(new Dimension(400,400));
+        setMinimumSize(new Dimension(400, 400));
         //frameEquipos.pack();
         //frameEquipos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -143,7 +142,7 @@ public class GUI_Equipos extends JPanel {
      nuevo en medio y poner el panel de abajo sin cambiar otra vez. Si no se quita el panel de abajo antes de añadir el
      de en medio, el panel nuevo se añade abajo, y el que estaba abajo se va al medio.
     */
-    public void cambiarFrameCentral (JPanel nuevaFrameCentral) {
+    public void cambiarFrameCentral(JPanel nuevaFrameCentral) {
         panelContenedor.remove(panelCentral);
         panelContenedor.remove(panelCentral);
         panelCentral = nuevaFrameCentral;
@@ -183,14 +182,14 @@ public class GUI_Equipos extends JPanel {
     // añade al panel de en medio el contenido de GUI_EquiposJugadores
     // TODO: Añadir metodos a la clase GUI_EquiposJugadores para que maneje una lista de jugadores
 
-    public void LanzarJugadores(){
+    public void LanzarJugadores() {
         /*
         GUI_Equipos gui = new GUI_Equipos(eq);
         ControladorEquipos ctr = new ControladorEquipos(gui);
         gui.ControladorEquipos(ctr);
         */
         eq = gui.getEquipo();
-        HashMap<String, List<Jugador>> jugadores=eq.jugadores();
+        HashMap<String, List<Jugador>> jugadores = eq.jugadores();
         panelCentral.setVisible(false);
         cambiarFrameCentral(new GUI_EquiposJugadores(jugadores));
         panelCentral.setVisible(true);
@@ -204,7 +203,7 @@ public class GUI_Equipos extends JPanel {
 
     // Metodo que usa la clase ControladorEquipos, lo que hace es crear una ventana con la GUI de GUI_Equipos, pero le
     // añade al panel de en medio el contenido de GUI_EquiposPartido pasandole un parametro null
-    public void LanzarPartidos_Eq(){
+    public void LanzarPartidos_Eq() {
         /*
         GUI_Equipos gui = new GUI_Equipos(eq);
         ControladorEquipos ctr = new ControladorEquipos(gui);
@@ -234,7 +233,7 @@ public class GUI_Equipos extends JPanel {
     // Metodo que usa la clase ControladorEquipos, lo que hace es crear una ventana con la GUI de GUI_Equipos, pero le
     // añade al panel de en medio el contenido de GUI_EquiposEstadio
 
-    public void LanzarEstadio(){
+    public void LanzarEstadio() {
         /*
         GUI_Equipos gui = new GUI_Equipos(eq);
         ControladorEquipos ctr = new ControladorEquipos(gui);
@@ -275,7 +274,7 @@ public class GUI_Equipos extends JPanel {
          */
 
         CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
-        layout.show(framePrincipal.getContentPane(),"Partidos");
+        layout.show(framePrincipal.getContentPane(), "Partidos");
         System.out.println("Se ha pulsado el boton Partidos "
                 + "Abrir GUI_Partidos");
     }
@@ -292,7 +291,7 @@ public class GUI_Equipos extends JPanel {
         eq = gui.nullEquipo();
         cambiarFrameCentral(new GUI_EquiposPartido(null));
         CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
-        layout.show(framePrincipal.getContentPane(),"Inicial");
+        layout.show(framePrincipal.getContentPane(), "Inicial");
 
         System.out.println("Se ha pulsado el boton Equipos "
                 + "Abrir GUI_Inicial");
@@ -302,6 +301,7 @@ public class GUI_Equipos extends JPanel {
         System.out.println("Se ha pulsado el boton Foros "
                 + "Abrir GUI_Foros");
     }
+
     public void LanzarPrensa() {
         System.out.println("Se ha pulsado el boton Prensa "
                 + "Abrir GUI_Prensa");

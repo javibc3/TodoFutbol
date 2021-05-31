@@ -9,14 +9,14 @@ public class Jugador {
     private int idEquipo;
     private int dorsal;
 
-    public Jugador(int id, String nom, String nac, String pos, int ed, int idEq, int dorsal){
+    public Jugador(int id, String nom, String nac, String pos, int ed, int idEq, int dorsal) {
         this.id = id;
         nombre = nom;
         nacionalidad = nac;
         posicion = pos;
         edad = ed;
         idEquipo = idEq;
-        this.dorsal=dorsal;
+        this.dorsal = dorsal;
     }
 
     public int getId() {

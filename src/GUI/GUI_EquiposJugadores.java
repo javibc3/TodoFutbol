@@ -1,4 +1,6 @@
-package main;
+package GUI;
+
+import main.Jugador;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -8,6 +10,7 @@ import java.util.List;
 
 /**
  * Implementa el apartado de Jugadores del submenu de Equipos
+ *
  * @see GUI_Equipos
  */
 
@@ -16,33 +19,23 @@ public class GUI_EquiposJugadores extends JPanel {
     private JList<String> listaDefensa;
     private JList<String> listaCentral;
     private JList<String> listaDelantero;
-    private JScrollPane listaPorteroScroll;
-    private JScrollPane listaDefensaScroll;
-    private JScrollPane listaCentralScroll;
-    private JScrollPane listaDelanteroScroll;
+    private final JScrollPane listaPorteroScroll;
+    private final JScrollPane listaDefensaScroll;
+    private final JScrollPane listaCentralScroll;
+    private final JScrollPane listaDelanteroScroll;
 
-    private JLabel labelPortero;
-    private JLabel labelDefensa;
-    private JLabel labelCentral;
-    private JLabel labelDelantero;
+    private final JLabel labelPortero;
+    private final JLabel labelDefensa;
+    private final JLabel labelCentral;
+    private final JLabel labelDelantero;
 
-    private HashMap<String, List<Jugador>> jugadores;
+    private final HashMap<String, List<Jugador>> jugadores;
 
     //TODO Falta la parte de organizar los jugadores en la distintas lista mediante su posicion.
     //TODO Falta tambien metodos para cambiar los diferentes campos de la interfaz
 
-    public JList ListToJlist(List<Jugador> jugadores){
-        JList nuevo = new JList();
-        DefaultListModel modelo = new DefaultListModel();
-        for(int i=0;i<jugadores.size();i++) {
-            modelo.addElement(jugadores.get(i).getNombre());
-        }
-        nuevo.setModel(modelo);
-        return nuevo;
-    }
-
-    public GUI_EquiposJugadores(HashMap<String, List<Jugador>> jugadores){
-        super(new GridLayout(2,4,5,0));
+    public GUI_EquiposJugadores(HashMap<String, List<Jugador>> jugadores) {
+        super(new GridLayout(2, 4, 5, 0));
 
 
         listaPortero = new JList<>();
@@ -83,6 +76,16 @@ public class GUI_EquiposJugadores extends JPanel {
         add(listaDelanteroScroll);
 
         this.jugadores = jugadores;
+    }
+
+    public JList ListToJlist(List<Jugador> jugadores) {
+        JList nuevo = new JList();
+        DefaultListModel modelo = new DefaultListModel();
+        for (int i = 0; i < jugadores.size(); i++) {
+            modelo.addElement(jugadores.get(i).getNombre());
+        }
+        nuevo.setModel(modelo);
+        return nuevo;
     }
 
 

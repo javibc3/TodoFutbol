@@ -14,7 +14,7 @@ public class PruebaConexionBD {
         List<Jugador> jugadores = BD.getJugadoresDeEquipo(1);
 
         System.out.println(Arrays.toString(equipo.toArray()));
-        for(int i=0;i<jugadores.size();i++) {
+        for (int i = 0; i < jugadores.size(); i++) {
             System.out.println(jugadores.get(i).getNombre() + " ");
         }
         System.out.println(jugadores);

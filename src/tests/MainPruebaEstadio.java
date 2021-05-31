@@ -5,7 +5,7 @@ import main.Equipo;
 import main.Estadio;
 
 public class MainPruebaEstadio {
-    public static void main (String []args) {
+    public static void main(String[] args) {
         ConexionBD baseDatos = ConexionBD.getInstance();
         Equipo equipo = baseDatos.getEquipoDeID(1);
         System.out.println("Equipo : " + equipo.getNombre());

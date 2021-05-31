@@ -1,13 +1,17 @@
-package main;
+package Controladores;
+
+import GUI.GUI_Equipos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ControladorEquipos implements ActionListener {
 
-    private GUI_Equipos EquiposPPal;
+    private final GUI_Equipos EquiposPPal;
 
-    public ControladorEquipos(GUI_Equipos equ) { this.EquiposPPal = equ;}
+    public ControladorEquipos(GUI_Equipos equ) {
+        this.EquiposPPal = equ;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

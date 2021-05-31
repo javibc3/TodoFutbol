@@ -1,10 +1,15 @@
-package main;
+import Controladores.Controlador;
+import Controladores.ControladorEquipos;
+import GUI.GUI_Equipos;
+import GUI.GUI_Inicial;
+import GUI.GUI_Partidos;
+import main.ConexionBD;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Main {
-    private static ConexionBD BD = ConexionBD.getInstance();
+    private static final ConexionBD BD = ConexionBD.getInstance();
 
 
     public static void main(String[] args) {
@@ -28,14 +33,14 @@ public class Main {
         ControladorEquipos ctrEquipos = new ControladorEquipos(equipos);
         equipos.ControladorEquipos(ctrEquipos);
 
-        frame.getContentPane().add(gui,"Inicial");
-        frame.getContentPane().add(equipos,"Equipos");
-        frame.getContentPane().add(partidos,"Partidos");
-        layout.show(frame.getContentPane(),"Inicial");
+        frame.getContentPane().add(gui, "Inicial");
+        frame.getContentPane().add(equipos, "Equipos");
+        frame.getContentPane().add(partidos, "Partidos");
+        layout.show(frame.getContentPane(), "Inicial");
 
 
         frame.setVisible(true);
-        frame.setMinimumSize(new Dimension(800,600));
+        frame.setMinimumSize(new Dimension(800, 600));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }

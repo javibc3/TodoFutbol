@@ -1,4 +1,6 @@
-package main;
+package GUI;
+
+import main.Estadio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,14 +9,15 @@ import java.net.URL;
 
 /**
  * Implementa el apartado de Estadio del submenu de Equipos
+ *
  * @see GUI_Equipos
  */
 
 public class GUI_EquiposEstadio extends JPanel {
-    private JLabel nombre;
-    private JLabel aforo;
-    private JLabel ciudad;
-    private JLabel fechaCreacion;
+    private final JLabel nombre;
+    private final JLabel aforo;
+    private final JLabel ciudad;
+    private final JLabel fechaCreacion;
 
     //Estos son los datos del estadio
     private JLabel nombreEstadio;
@@ -22,18 +25,18 @@ public class GUI_EquiposEstadio extends JPanel {
     private JLabel ciudadEstadio;
     private JLabel fechaEstadio;
 
-    private JPanel panelIzquierdo;
+    private final JPanel panelIzquierdo;
     private ImageIcon imagen;
 
-    public GUI_EquiposEstadio(String imagen, Estadio estadio){
-        super(new GridLayout(1,2));
+    public GUI_EquiposEstadio(String imagen, Estadio estadio) {
+        super(new GridLayout(1, 2));
 
         nombre = new JLabel("Nombre");
         aforo = new JLabel("Aforo");
         ciudad = new JLabel("Ciudad");
         fechaCreacion = new JLabel("Fecha de construccion");
 
-        if(estadio != null) {
+        if (estadio != null) {
             setNombreEstadio(estadio);
             setAforoEstadio(estadio);
             setCiudadEstadio(estadio);
@@ -44,7 +47,7 @@ public class GUI_EquiposEstadio extends JPanel {
             ciudadEstadio = new JLabel("PruebaCiudad");
             fechaEstadio = new JLabel("PruebaFecha");
         }
-        panelIzquierdo = new JPanel(new GridLayout(4,2));
+        panelIzquierdo = new JPanel(new GridLayout(4, 2));
 
         panelIzquierdo.add(nombre);
         panelIzquierdo.add(nombreEstadio);
@@ -59,7 +62,7 @@ public class GUI_EquiposEstadio extends JPanel {
         Image imagenRescalada;
         try {
             this.imagen = new ImageIcon(new URL(imagen));
-             imagenRescalada = this.imagen.getImage().getScaledInstance(200,200,Image.SCALE_SMOOTH);
+            imagenRescalada = this.imagen.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
             this.imagen.setImage(imagenRescalada);
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -68,19 +71,19 @@ public class GUI_EquiposEstadio extends JPanel {
         add(new JLabel(this.imagen));
     }
 
-    private void setNombreEstadio(Estadio est){
+    private void setNombreEstadio(Estadio est) {
         nombreEstadio = new JLabel(est.getNombre());
     }
 
-    private void setAforoEstadio(Estadio est){
+    private void setAforoEstadio(Estadio est) {
         aforoEstadio = new JLabel(Integer.toString(est.getAforo()));
     }
 
-    private void setCiudadEstadio(Estadio est){
+    private void setCiudadEstadio(Estadio est) {
         ciudadEstadio = new JLabel(est.getCiudad());
     }
 
-    private void setFechaEstadio(Estadio est){
+    private void setFechaEstadio(Estadio est) {
         fechaEstadio = new JLabel(Integer.toString(est.getFechaconstruccion()));
     }
 
