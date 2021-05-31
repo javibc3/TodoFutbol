@@ -16,13 +16,13 @@ public class ControladorEquipos implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "JUGADORES" -> EquiposPPal.LanzarJugadores();
-            case "ESTADIO" -> EquiposPPal.LanzarEstadio();
-            case "PARTIDOS_EQ" -> EquiposPPal.LanzarPartidos_Eq();
-            case "BOTON PARTIDOS" -> EquiposPPal.LanzarPartidos();
-            case "BOTON EQUIPOS" -> EquiposPPal.LanzarEquipos();
-            case "BOTON PRENSA" -> EquiposPPal.LanzarPrensa();
-            case "BOTON FOROS" -> EquiposPPal.LanzarForos();
+            case "JUGADORES": EquiposPPal.LanzarJugadores();break;
+            case "ESTADIO": EquiposPPal.LanzarEstadio();break;
+            case "PARTIDOS_EQ": EquiposPPal.LanzarPartidos_Eq();break;
+            case "BOTON PARTIDOS": EquiposPPal.LanzarPartidos();break;
+            case "BOTON EQUIPOS": EquiposPPal.LanzarEquipos();break;
+            case "BOTON PRENSA": EquiposPPal.LanzarPrensa();break;
+            case "BOTON FOROS": EquiposPPal.LanzarForos();break;
         }
     }
 }

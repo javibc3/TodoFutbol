@@ -22,20 +22,20 @@ public class Controlador implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "BOTON PARTIDOS" -> panel.LanzarPartidos();
-            case "BOTON EQUIPOS" -> panel.LanzarEquipos();
-            case "BOTON PRENSA" -> panel.LanzarPrensa();
-            case "BOTON FOROS" -> panel.LanzarForos();
-            case "BOTON PAR:EQUIPOS" -> par.LanzarEquipos();
-            case "BOTON PAR:PRENSA" -> par.LanzarPrensa();
-            case "BOTON PAR:FOROS" -> par.LanzarForos();
-            case "BOTON PAR:PARTIDOS" -> par.LanzarPartidos();
-            case "EQUIPOS1" -> panel.LanzarEquipos1_6(1);
-            case "EQUIPOS2" -> panel.LanzarEquipos1_6(2);
-            case "EQUIPOS3" -> panel.LanzarEquipos1_6(3);
-            case "EQUIPOS4" -> panel.LanzarEquipos1_6(4);
-            case "EQUIPOS5" -> panel.LanzarEquipos1_6(5);
-            case "EQUIPOS6" -> panel.LanzarEquipos1_6(6);
+            case "BOTON PARTIDOS": panel.LanzarPartidos(); break;
+            case "BOTON EQUIPOS": panel.LanzarEquipos();break;
+            case "BOTON PRENSA": panel.LanzarPrensa();break;
+            case "BOTON FOROS": panel.LanzarForos();break;
+            case "BOTON PAR:EQUIPOS": par.LanzarEquipos();break;
+            case "BOTON PAR:PRENSA": par.LanzarPrensa();break;
+            case "BOTON PAR:FOROS":  par.LanzarForos();break;
+            case "BOTON PAR:PARTIDOS": par.LanzarPartidos();break;
+            case "EQUIPOS1": panel.LanzarEquipos1_6(1);break;
+            case "EQUIPOS2": panel.LanzarEquipos1_6(2);break;
+            case "EQUIPOS3": panel.LanzarEquipos1_6(3);break;
+            case "EQUIPOS4": panel.LanzarEquipos1_6(4);break;
+            case "EQUIPOS5": panel.LanzarEquipos1_6(5);break;
+            case "EQUIPOS6": panel.LanzarEquipos1_6(6);break;
         }
     }
 }

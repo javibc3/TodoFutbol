@@ -56,10 +56,10 @@ public class Equipo {
         for (int i = 0; i < jugadores.size(); ++i) {
 
             switch (jugadores.get(i).getPosicion()) {
-                case "POR" -> POR.add(jugadores.get(i));
-                case "DEF" -> DEF.add(jugadores.get(i));
-                case "CEN" -> CEN.add(jugadores.get(i));
-                case "DEL" -> DEL.add(jugadores.get(i));
+                case "POR": POR.add(jugadores.get(i));break;
+                case "DEF": DEF.add(jugadores.get(i));break;
+                case "CEN": CEN.add(jugadores.get(i));break;
+                case "DEL": DEL.add(jugadores.get(i));break;
             }
         }
 
