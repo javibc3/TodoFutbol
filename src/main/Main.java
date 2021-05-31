@@ -1,3 +1,5 @@
+package main;
+
 import Controladores.Controlador;
 import Controladores.ControladorEquipos;
 import GUI.GUI_Equipos;
