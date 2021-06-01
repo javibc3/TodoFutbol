@@ -1,5 +1,6 @@
 package GUI;
 
+import main.ConexionBD;
 import main.Equipo;
 import main.Partidos;
 
@@ -11,6 +12,8 @@ import java.util.List;
 
 
 public class GUI_Partidos extends JPanel {
+
+    private final ConexionBD baseDatos = ConexionBD.getInstance();
 
     JPanel panelContenedor;
     private final JFrame framePrincipal;
@@ -113,10 +116,11 @@ public class GUI_Partidos extends JPanel {
         lbClasif3 = new JLabel(listaEquipos.get(2).getNombre());
         */
 
+        List<Equipo> Rank = RankingEquipos(baseDatos);
 
-        lbClasif1 = new JLabel("Placeholder1");
-        lbClasif2 = new JLabel("Placeholder2");
-        lbClasif3 = new JLabel("Placeholder3");
+        lbClasif1 = new JLabel(Rank.get(0).getNombre() + " con " + Rank.get(0).getPuntos() + " puntos");
+        lbClasif2 = new JLabel(String.valueOf(Rank.get(1).getNombre()) + " con " + Rank.get(1).getPuntos() + " puntos");
+        lbClasif3 = new JLabel(String.valueOf(Rank.get(2).getNombre()) + " con " + Rank.get(2).getPuntos() + " puntos");
         lbClasif1.setHorizontalAlignment(SwingConstants.CENTER);
         lbClasif2.setHorizontalAlignment(SwingConstants.CENTER);
         lbClasif3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -144,15 +148,39 @@ public class GUI_Partidos extends JPanel {
         //framePartidos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    private List<Equipo> ordenaLista(List<Equipo> Top3){
+        int res1 = Top3.get(0).getPuntos();
+        int res2 = Top3.get(1).getPuntos();
+        int res3 = Top3.get(2).getPuntos();
+
+        if (res1 < res2) {  // Si el primer equipo tiene peores resultados que el segundo, se intercambian
+            Equipo resAux = Top3.get(0);  // Y se intercambian los resultados tambien
+            Top3.add(0, Top3.get(1));
+            Top3.add(1, resAux);
+        }
+        if (res2 < res3) {  // Si el segundo equipo tiene peores resultados que el tercero, se intercambian
+            Equipo resAux = Top3.get(1);
+            Top3.add(1, Top3.get(2));
+            Top3.add(2, resAux);
+            if (res1 < res2) {  // Si el segundo y el tercer equipo se han intercambiado, se compara el primero con el segundo otra vez
+                Equipo resAux2 = Top3.get(0);  // Y se intercambian los resultados tambien
+                Top3.add(0, Top3.get(1));
+                Top3.add(1, resAux2);
+            }
+        }
+        return Top3;
+    }
+
     // Metodo privado para calcular los 3 mejores equipos de la temporada
     private List<Equipo> RankingEquipos(main.ConexionBD BD) {
         List<Equipo> Top3 = new ArrayList<>();  // Lista con los 3 mejores equipos
         List<Equipo> Equipos;  // Lista con todos los equipos de la temporada
         List<Partidos> Partidos; // Lista con todos los partidos de un equipo
         Equipos = BD.getEquipos();
-        int n = 0, i = 0, resultadoTotal, res1 = 0, res2 = 0, res3 = 0;
+        int n = 0, resultadoTotal;/*i = 0, res1 = 0, res2 = 0, res3 = 0*/
         while (Equipos.size() > n) {  // Recorre todos los equipos de la lista
-            resultadoTotal = 0;  // Goles totales de todos los partidos del equipo
+            resultadoTotal = Equipos.get(n).getPuntos();
+            /*resultadoTotal = 0;  // Goles totales de todos los partidos del equipo
             Partidos = BD.getPartidosDeEquipo(Equipos.get(n));  // Cogemos de la BD todos los partidos del equipo que este en el bucle en este momento
             while (Partidos.size() > i) {  // Recorre todos los partidos de la lista
                 if (Equipos.get(n).equals(Partidos.get(i).getEquipoLocal())) {  // Si el equipo es el local, se coge el primer caracter de resultados, y se pasa a int
@@ -160,44 +188,19 @@ public class GUI_Partidos extends JPanel {
                 } else
                     resultadoTotal = resultadoTotal + Character.getNumericValue(Partidos.get(i).getResultado().charAt(2)); // Si el equipo es visitante, se coge el tercer caracter de resultados
                 i++;
-            }
+            }*/
             if (n < 3) { // Si la lista todavia no tiene 3 elementos, mete el equipo sin hacer comprobaciones
                 Top3.add(Equipos.get(n));
-                if (n == 0) {
-                    res1 = resultadoTotal;  // res1 es el resultado total del primer equipo del Top3, res2, del segundo, y res3, del tercero
-                } else if (n == 1) {
-                    res2 = resultadoTotal;
-                } else res3 = resultadoTotal;
-            } else if (resultadoTotal > res1) {  // Si hay 3 o mas equipos en la lista, compara los resultados
-                Top3.remove(0);  // Si el resultado del equipo de la lista es menor que el del equipo del bucle actual, se sustituye
+                if (n == 2) { // Cuando tenga los 3 primeros equipos, la lista se ordena de mayor a menor
+                    Top3 = ordenaLista(Top3);
+                }
+                //Cuando haya 3 o más equipos, como la lista está ordenada, solo necesita comparar con el que está en 3º puesto
+            } else if (resultadoTotal > Top3.get(2).getPuntos()) {  // Si hay 3 o mas equipos en la lista, compara los resultados
+                Top3.remove(2);  // Si el resultado del equipo de la lista es menor que el del equipo del bucle actual, se sustituye
                 Top3.add(Equipos.get(n));
-            } else if (resultadoTotal > res2) {
-                Top3.remove(1);
-                Top3.add(Equipos.get(n));
-            } else if (resultadoTotal > res3) {
-                Top3.remove(2);
-                Top3.add(Equipos.get(n));
+                Top3 = ordenaLista(Top3);
             }
             n++;
-        }
-        // Finalmente, se ordena la lista
-        if (res1 < res2) {  // Si el primer equipo tiene peores resultados que el segundo, se intercambian
-            Equipos.add(0, Equipos.get(1));
-            int resAux = res1;  // Y se intercambian los resultados tambien
-            res1 = res2;
-            res2 = resAux;
-        }
-        if (res2 < res3) {  // Si el segundo equipo tiene peores resultados que el tercero, se intercambian
-            Equipos.add(1, Equipos.get(2));
-            int resAux = res2;
-            res2 = res3;
-            res3 = resAux;
-            if (res1 < res2) {  // Si el segundo y el tercer equipo se han intercambiado, se compara el primero con el segundo otra vez
-                Equipos.add(0, Equipos.get(1));
-                resAux = res1;
-                res1 = res2;
-                res2 = resAux;
-            }
         }
         return Top3;
     }
