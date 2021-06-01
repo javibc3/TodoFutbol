@@ -21,7 +21,9 @@ public class GUI_Partidos extends JPanel {
     private final JPanel subpanelTitulo;
     private final JPanel subpanelEnBlanco1;
 
+    private final JPanel panelParYClas;
     private final JPanel panelPartidos;
+    private final JPanel panelClasificacion;
 
     private final JPanel panelAbajo;
     private final JPanel subpanelEnBlanco2;
@@ -35,9 +37,6 @@ public class GUI_Partidos extends JPanel {
     private final JButton botonPrensa;
     private final JLabel lblClasificacion;
     private final JLabel lblPartidos_1;
-    private final JLabel lbPartido1;
-    private final JLabel lbPartido2;
-    private final JLabel lbPartido3;
     private final JLabel lbClasif1;
     private final JLabel lbClasif2;
     private final JLabel lbClasif3;
@@ -45,11 +44,13 @@ public class GUI_Partidos extends JPanel {
     public GUI_Partidos(JFrame frame) {
         framePrincipal = frame;
 
-        panelContenedor = new JPanel(new GridLayout(3, 1));
+        panelContenedor = new JPanel(new GridLayout(3, 2));
         panelArriba = new JPanel(new GridLayout(2, 1));
         subpanelTitulo = new JPanel(new GridLayout(1, 1));
         subpanelEnBlanco1 = new JPanel(new GridLayout(1, 1));
-        panelPartidos = new JPanel(new GridLayout(3, 2));
+        panelParYClas = new JPanel(new GridLayout(1, 2));
+        panelPartidos = new JPanel(new GridLayout(1, 1));
+        panelClasificacion = new JPanel(new GridLayout(3, 1));
         panelAbajo = new JPanel(new GridLayout(2, 1));
         subpanelEnBlanco2 = new JPanel(new GridLayout(1, 1));
         subpanelMenu = new JPanel(new GridLayout(1, 4));
@@ -99,26 +100,7 @@ public class GUI_Partidos extends JPanel {
         main.ConexionBD BD = main.ConexionBD.getInstance();
 
         listaPartidos = BD.getPartidos();
-        lbPartido1 = new JLabel(listaPartidos.get(0).toString());
-        lbPartido2 = new JLabel(listaPartidos.get(1).toString());
-        lbPartido3 = new JLabel(listaPartidos.get(2).toString());
-        lbPartido1.setHorizontalAlignment(SwingConstants.CENTER);
-        lbPartido2.setHorizontalAlignment(SwingConstants.CENTER);
-        lbPartido3.setHorizontalAlignment(SwingConstants.CENTER);
-
-        /*
-        lbPartido1 = new JLabel("Partido1");
-        lbPartido2 = new JLabel("Partido2");
-        lbPartido3 = new JLabel("Partido3");
-        lbPartido1.setHorizontalAlignment(SwingConstants.CENTER);
-        lbPartido2.setHorizontalAlignment(SwingConstants.CENTER);
-        lbPartido3.setHorizontalAlignment(SwingConstants.CENTER);
-
-        listaEquipos = RankingEquipos(BD);
-        lbClasif1 = new JLabel(listaEquipos.get(0).getNombre());
-        lbClasif2 = new JLabel(listaEquipos.get(1).getNombre());
-        lbClasif3 = new JLabel(listaEquipos.get(2).getNombre());
-        */
+        panelPartidos.add(new GUI_EquiposPartido(listaPartidos));
 
         listaEquipos = RankingEquipos(baseDatos);
         lbClasif1 = new JLabel("1º " + listaEquipos.get(0).getNombre() + " con " + listaEquipos.get(0).getPuntos() + " puntos");
@@ -128,18 +110,18 @@ public class GUI_Partidos extends JPanel {
         lbClasif2.setHorizontalAlignment(SwingConstants.CENTER);
         lbClasif3.setHorizontalAlignment(SwingConstants.CENTER);
 
-        panelPartidos.add(lbPartido1);
-        panelPartidos.add(lbClasif1);
-        panelPartidos.add(lbPartido2);
-        panelPartidos.add(lbClasif2);
-        panelPartidos.add(lbPartido3);
-        panelPartidos.add(lbClasif3);
+        panelClasificacion.add(lbClasif1);
+        panelClasificacion.add(lbClasif2);
+        panelClasificacion.add(lbClasif3);
+
+        panelParYClas.add(panelPartidos);
+        panelParYClas.add(panelClasificacion);
 
         panelAbajo.add(subpanelEnBlanco2);
         panelAbajo.add(subpanelMenu);
 
         panelContenedor.add(panelArriba);
-        panelContenedor.add(panelPartidos);
+        panelContenedor.add(panelParYClas);
         panelContenedor.add(panelAbajo);
 
         //framePartidos.getContentPane()
