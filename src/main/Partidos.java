@@ -67,6 +67,11 @@ public class Partidos {
 
     @Override
     public String toString() {
+        return equipoLocal.getNombre() + " " + resultado + " " + equipoVisitante.getNombre() + "    Fecha: " + fecha;
+    }
+
+    /*@Override
+    public String toString() {
         return "Partidos{" +
                 "idPartido=" + idPartido +
                 ", equipoLocal=" + equipoLocal +
@@ -75,5 +80,5 @@ public class Partidos {
                 ", fecha=" + fecha +
                 ", resultado='" + resultado + '\'' +
                 '}';
-    }
+    }*/
 }

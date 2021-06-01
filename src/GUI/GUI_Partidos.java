@@ -93,6 +93,20 @@ public class GUI_Partidos extends JPanel {
         lblClasificacion.setHorizontalAlignment(SwingConstants.CENTER);
         subpanelEnBlanco1.add(lblClasificacion);
 
+        List<Partidos> listaPartidos = new ArrayList<>();
+        List<Equipo> listaEquipos = new ArrayList<>();
+
+        main.ConexionBD BD = main.ConexionBD.getInstance();
+
+        listaPartidos = BD.getPartidos();
+        lbPartido1 = new JLabel(listaPartidos.get(0).toString());
+        lbPartido2 = new JLabel(listaPartidos.get(1).toString());
+        lbPartido3 = new JLabel(listaPartidos.get(2).toString());
+        lbPartido1.setHorizontalAlignment(SwingConstants.CENTER);
+        lbPartido2.setHorizontalAlignment(SwingConstants.CENTER);
+        lbPartido3.setHorizontalAlignment(SwingConstants.CENTER);
+
+        /*
         lbPartido1 = new JLabel("Partido1");
         lbPartido2 = new JLabel("Partido2");
         lbPartido3 = new JLabel("Partido3");
@@ -100,27 +114,16 @@ public class GUI_Partidos extends JPanel {
         lbPartido2.setHorizontalAlignment(SwingConstants.CENTER);
         lbPartido3.setHorizontalAlignment(SwingConstants.CENTER);
 
-        /*
-        List<Partidos> listaPartidos = new ArrayList<>();
-        List<Equipo> listaEquipos = new ArrayList<>();
-
-        main.ConexionBD BD = main.ConexionBD.getInstance();
-        listaPartidos = BD.getPartidos();
-        lbPartido1 = new JLabel(listaPartidos.get(0).toString());
-        lbPartido2 = new JLabel(listaPartidos.get(1).toString());
-        lbPartido3 = new JLabel(listaPartidos.get(2).toString());
-
         listaEquipos = RankingEquipos(BD);
         lbClasif1 = new JLabel(listaEquipos.get(0).getNombre());
         lbClasif2 = new JLabel(listaEquipos.get(1).getNombre());
         lbClasif3 = new JLabel(listaEquipos.get(2).getNombre());
         */
 
-        List<Equipo> Rank = RankingEquipos(baseDatos);
-
-        lbClasif1 = new JLabel(Rank.get(0).getNombre() + " con " + Rank.get(0).getPuntos() + " puntos");
-        lbClasif2 = new JLabel(String.valueOf(Rank.get(1).getNombre()) + " con " + Rank.get(1).getPuntos() + " puntos");
-        lbClasif3 = new JLabel(String.valueOf(Rank.get(2).getNombre()) + " con " + Rank.get(2).getPuntos() + " puntos");
+        listaEquipos = RankingEquipos(baseDatos);
+        lbClasif1 = new JLabel("1º " + listaEquipos.get(0).getNombre() + " con " + listaEquipos.get(0).getPuntos() + " puntos");
+        lbClasif2 = new JLabel("2º " + listaEquipos.get(1).getNombre() + " con " + listaEquipos.get(1).getPuntos() + " puntos");
+        lbClasif3 = new JLabel("3º " + listaEquipos.get(2).getNombre() + " con " + listaEquipos.get(2).getPuntos() + " puntos");
         lbClasif1.setHorizontalAlignment(SwingConstants.CENTER);
         lbClasif2.setHorizontalAlignment(SwingConstants.CENTER);
         lbClasif3.setHorizontalAlignment(SwingConstants.CENTER);
