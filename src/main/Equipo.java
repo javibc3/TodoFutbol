@@ -8,13 +8,15 @@ public class Equipo {
     private int id;
     private String nombre;
     private String escudo;
+    private int puntos;
     private final ConexionBD baseDatos = ConexionBD.getInstance();
     private HashMap<String, List<Jugador>> jugadores;
 
-    public Equipo(int id, String nom, String Esc) {
+    public Equipo(int id, String nom, String Esc, int pun) {
         this.id = id;
         nombre = nom;
         escudo = Esc;
+        puntos = pun;
     }
 
     public int getId() {
@@ -39,6 +41,14 @@ public class Equipo {
 
     public void setEscudo(String escudo) {
         this.escudo = escudo;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos){
+        this.puntos = puntos;
     }
 
     public HashMap<String, List<Jugador>> jugadores() {

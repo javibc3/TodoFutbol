@@ -62,7 +62,8 @@ public class ConexionBD {
                     int id = rs.getInt(1);
                     String nombre = rs.getString(2);
                     String escudo = rs.getString(3);
-                    Equipo eq = new Equipo(id, nombre, escudo);
+                    int puntos = rs.getInt(4);
+                    Equipo eq = new Equipo(id, nombre, escudo, puntos);
                     listaEquipos.add(eq);
                 }
             }
@@ -295,7 +296,8 @@ public class ConexionBD {
                 rs.next();
                 String nombre = rs.getString(2);
                 String escudo = rs.getString(3);
-                equipo = new Equipo(ideq, nombre, escudo);
+                int puntos = rs.getInt(4);
+                equipo = new Equipo(ideq, nombre, escudo, puntos);
             }
         } catch (SQLException throwables) {
             System.err.println("SQL Exception: " + throwables.getMessage());

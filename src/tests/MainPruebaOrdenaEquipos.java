@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MainPruebaOrdenaEquipos {
     public static void main(String[] args) {
-        Equipo equipo = new Equipo(1, "FCB", null);
+        Equipo equipo = new Equipo(1, "FCB", null, 4);
         HashMap<String, List<Jugador>> jugadores = equipo.jugadores();
         List<Jugador> POR = jugadores.get("POR");
         List<Jugador> DEF = jugadores.get("DEF");
