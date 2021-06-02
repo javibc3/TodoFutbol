@@ -329,4 +329,26 @@ public class ConexionBD {
         }
         return goleadores;
     }
+
+    public String getURLImagenDeID(int id) {
+        String res = null;
+
+        try {
+            PreparedStatement sentencia = connection.prepareStatement("SELECT IMAGEN FROM ESTADIOS WHERE ID = ?");
+
+            sentencia.setInt(1, id);
+
+            ResultSet rs = sentencia.executeQuery();
+
+            if (rs.isBeforeFirst()) {
+                rs.next();
+            }
+            res = rs.getString(1);
+        } catch (SQLException throwables) {
+            System.err.println("SQL Exception: " + throwables.getMessage());
+            throwables.printStackTrace();
+        }
+
+        return res;
+    }
 }

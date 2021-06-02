@@ -254,7 +254,10 @@ public class GUI_Equipos extends JPanel {
         Estadio estadio = baseDatos.getEstadioDeEquipo(eq);
         System.out.println("Estadio: " + estadio.getNombre());
         panelCentral.setVisible(false);
-        cambiarFrameCentral(new GUI_EquiposEstadio("https://imagesvc.timeincapp.com/v3/fan/image?url=https://therealchamps.com/wp-content/uploads/getty-images/2018/12/458769189.jpeg&c=sc&w=1600&h=1132", estadio));
+
+        String urlEstadio = baseDatos.getURLImagenDeID(eq.getId());
+
+        cambiarFrameCentral(new GUI_EquiposEstadio(urlEstadio, estadio));
         panelCentral.setVisible(true);
         //frameEquipos.dispose();
         //dispose();
