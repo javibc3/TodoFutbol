@@ -134,4 +134,19 @@ public class Estadisticas_Partidos {
     public void setFaltas(int faltas) {
         this.faltas = faltas;
     }
+
+    @Override
+    public String toString() {
+        return "Posesion: " + posesion + "\n" +
+               "Goles: " + goles + "\n" +
+               "Fueras de juego: " + fueras_juego + "\n" +
+               "Corners: " + corners + "\n" +
+               "Tarjetas amarillas: " + tarjetas_amarillas + "\n" +
+               "Tarjetas  rojas: " + tarjetas_rojas + "\n" +
+               "Tiros Totales: " + tiros_totales + "\n" +
+               "Tiros a puerta: " + tiros_puerta + "\n" +
+               "Pases: " + pases + "\n" +
+               "Penaltis: " + penaltis + "\n" +
+               "Faltas: " + faltas;
+    }
 }

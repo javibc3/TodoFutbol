@@ -182,15 +182,16 @@ public class ConexionBD {
      * @param jugador main.Jugador del cual queremos obtener sus estadisticas
      * @return La estadistica del jugador como un objeto main.Estadistica o null si ese jugador no existe
      */
-    public Estadistica getEstadisticaDeJugador(Jugador jugador) {
-        Estadistica est = null;
+    public List<Estadistica> getEstadisticaDeJugador(int ID_jugador) {
+        List<Estadistica> listaEst = null;
         PreparedStatement sentencia;
 
         try {
             sentencia = connection.prepareStatement("SELECT * FROM ESTADISTICAS WHERE IDJUGADOR = ?");
-            sentencia.setInt(1, jugador.getId());
+            sentencia.setInt(1, ID_jugador);
             ResultSet rs = sentencia.executeQuery();
             if (rs.isBeforeFirst()) {
+                listaEst = new ArrayList<>();
                 rs.next();
                 int idJugador = rs.getInt(1);
                 int partidosJugados = rs.getInt(2);
@@ -201,13 +202,13 @@ public class ConexionBD {
                 int paradas = rs.getInt(7);
                 int faltas = rs.getInt(8);
                 int tarjetasRojas = rs.getInt(9);
-                est = new Estadistica(idJugador, partidosJugados, numGoles, distRec, asistencias, tarjetasAmarillas, paradas, faltas, tarjetasRojas);
+                listaEst.add( new Estadistica(idJugador, partidosJugados, numGoles, distRec, asistencias, tarjetasAmarillas, paradas, faltas, tarjetasRojas));
             }
         } catch (SQLException throwables) {
             System.err.println("SQL Exception: " + throwables.getMessage());
             throwables.printStackTrace();
         }
-        return est;
+        return listaEst;
     }
 
     /**
