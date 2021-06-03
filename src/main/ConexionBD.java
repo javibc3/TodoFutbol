@@ -279,6 +279,44 @@ public class ConexionBD {
         return listaPartidos;
     }
 
+    public List<Estadisticas_Partidos> getEstadisticasPartidos(int ID_partido, int ID_equipo) {
+        List<Estadisticas_Partidos> listaEstadisticas = null;
+        try{
+            PreparedStatement sentencia=connection.prepareStatement("SELECT * FROM ESTADISTICAS_PARTIDOS WHERE ID_PARTIDO=? AND ID_EQUIPO=?");
+            sentencia.setInt(1, ID_partido);
+            sentencia.setInt(2, ID_equipo);
+            ResultSet rs = sentencia.executeQuery();
+            if (rs.isBeforeFirst()) {
+                listaEstadisticas = new ArrayList<>();
+                while (rs.next()) {
+                    int idpar = rs.getInt(1);
+                    int ideq = rs.getInt(2);
+                    int posesion = rs.getInt(3);
+                    int goles = rs.getInt(4);
+                    int fueras_juego = rs.getInt(5);
+                    int corners = rs.getInt(6);
+                    int tarjetas_amarillas = rs.getInt(7);
+                    int tarjetas_rojas = rs.getInt(8);
+                    int tiros_totales = rs.getInt(9);
+                    int tiros_puerta = rs.getInt(10);
+                    int pases = rs.getInt(11);
+                    int penaltis = rs.getInt(12);
+                    int faltas = rs.getInt(13);
+
+                    listaEstadisticas.add(new Estadisticas_Partidos(idpar,ideq,posesion,goles,fueras_juego,corners,tarjetas_amarillas,tarjetas_rojas, tiros_totales,tiros_puerta,pases,penaltis,faltas));
+                }
+            }
+
+
+
+        } catch(SQLException throwables){
+            System.err.println("SQL Exception: "+throwables.getMessage());
+            throwables.printStackTrace();
+        }
+
+        return listaEstadisticas;
+    }
+
     /**
      * Obetener de la base de datos el equipo asociado al id especificado por parametro
      *
