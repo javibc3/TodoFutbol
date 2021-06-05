@@ -2,9 +2,11 @@ package main;
 
 import Controladores.Controlador;
 import Controladores.ControladorEquipos;
+import Controladores.ControladorPrensa;
 import GUI.GUI_Equipos;
 import GUI.GUI_Inicial;
 import GUI.GUI_Partidos;
+import GUI.GUI_Prensa;
 import main.ConexionBD;
 
 import javax.swing.*;
@@ -35,9 +37,14 @@ public class Main {
         ControladorEquipos ctrEquipos = new ControladorEquipos(equipos);
         equipos.ControladorEquipos(ctrEquipos);
 
+        GUI_Prensa prensa = new GUI_Prensa(frame);
+        ControladorPrensa ctrPrensa = new ControladorPrensa(prensa);
+        prensa.controlador(ctrPrensa);
+
         frame.getContentPane().add(gui, "Inicial");
         frame.getContentPane().add(equipos, "Equipos");
         frame.getContentPane().add(partidos, "Partidos");
+        frame.getContentPane().add(prensa, "Prensa");
         layout.show(frame.getContentPane(), "Inicial");
 
 
