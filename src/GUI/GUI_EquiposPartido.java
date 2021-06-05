@@ -50,9 +50,15 @@ public class GUI_EquiposPartido extends JPanel {
                 partidosArray.add(Partido);
             }
             listaPartidos = ListToJlist(partidosArray);
+
+            // Para centrar el texto de las entradas de la lista y que quede un poco más legible
+            DefaultListCellRenderer renderer =  (DefaultListCellRenderer)listaPartidos.getCellRenderer();
+            renderer.setHorizontalAlignment(JLabel.CENTER);
         }
 
         listaConScrollbar = new JScrollPane(listaPartidos);
+
+
 
         add(listaConScrollbar);
     }

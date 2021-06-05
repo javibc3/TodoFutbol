@@ -284,6 +284,9 @@ public class GUI_Partidos extends JPanel {
     }
 
     public void LanzarPrensa() {
+        CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
+        layout.show(framePrincipal.getContentPane(), "Prensa");
+
         System.out.println("Se ha pulsado el boton Prensa "
                 + "Abrir GUI_Prensa");
     }

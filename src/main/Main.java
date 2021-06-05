@@ -3,14 +3,12 @@ package main;
 import Controladores.Controlador;
 import Controladores.ControladorEquipos;
 import Controladores.ControladorEstadisticas;
+import Controladores.ControladorPrensa;
 import GUI.*;
 import main.ConexionBD;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class Main {
     private static final ConexionBD BD = ConexionBD.getInstance();
@@ -41,10 +39,15 @@ public class Main {
         ControladorEstadisticas ctrEstadisticas = new ControladorEstadisticas(estadisticasPartido);
         estadisticasPartido.ControladorEstadisticas(ctrEstadisticas);
 
+        GUI_Prensa prensa = new GUI_Prensa(frame);
+        ControladorPrensa ctrPrensa = new ControladorPrensa(prensa);
+        prensa.controlador(ctrPrensa);
+
         frame.getContentPane().add(gui, "Inicial");
         frame.getContentPane().add(equipos, "Equipos");
         frame.getContentPane().add(partidos, "Partidos");
         frame.getContentPane().add(estadisticasPartido, "EstadisticasPartido");
+        frame.getContentPane().add(prensa, "Prensa");
         layout.show(frame.getContentPane(), "Inicial");
 
 
