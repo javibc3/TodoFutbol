@@ -179,7 +179,7 @@ public class ConexionBD {
     /**
      * Obtenenos de la base de datos las estadisticas de un jugador que entra por parametro
      *
-     * @param jugador main.Jugador del cual queremos obtener sus estadisticas
+     * @param ID_jugador main.Jugador del cual queremos obtener sus estadisticas
      * @return La estadistica del jugador como un objeto main.Estadistica o null si ese jugador no existe
      */
     public List<Estadistica> getEstadisticaDeJugador(int ID_jugador) {
@@ -280,15 +280,14 @@ public class ConexionBD {
         return listaPartidos;
     }
 
-    public List<Estadisticas_Partidos> getEstadisticasPartidos(int ID_partido, int ID_equipo) {
-        List<Estadisticas_Partidos> listaEstadisticas = null;
+    public Estadisticas_Partidos getEstadisticasPartidos(int ID_partido, int ID_equipo) {
+        Estadisticas_Partidos listaEstadisticas = null;
         try{
             PreparedStatement sentencia=connection.prepareStatement("SELECT * FROM ESTADISTICAS_PARTIDOS WHERE ID_PARTIDO=? AND ID_EQUIPO=?");
             sentencia.setInt(1, ID_partido);
             sentencia.setInt(2, ID_equipo);
             ResultSet rs = sentencia.executeQuery();
             if (rs.isBeforeFirst()) {
-                listaEstadisticas = new ArrayList<>();
                 while (rs.next()) {
                     int idpar = rs.getInt(1);
                     int ideq = rs.getInt(2);
@@ -304,7 +303,7 @@ public class ConexionBD {
                     int penaltis = rs.getInt(12);
                     int faltas = rs.getInt(13);
 
-                    listaEstadisticas.add(new Estadisticas_Partidos(idpar,ideq,posesion,goles,fueras_juego,corners,tarjetas_amarillas,tarjetas_rojas, tiros_totales,tiros_puerta,pases,penaltis,faltas));
+                    listaEstadisticas = (new Estadisticas_Partidos(idpar,ideq,posesion,goles,fueras_juego,corners,tarjetas_amarillas,tarjetas_rojas, tiros_totales,tiros_puerta,pases,penaltis,faltas));
                 }
             }
 

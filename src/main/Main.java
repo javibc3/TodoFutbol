@@ -2,13 +2,15 @@ package main;
 
 import Controladores.Controlador;
 import Controladores.ControladorEquipos;
-import GUI.GUI_Equipos;
-import GUI.GUI_Inicial;
-import GUI.GUI_Partidos;
+import Controladores.ControladorEstadisticas;
+import GUI.*;
 import main.ConexionBD;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Main {
     private static final ConexionBD BD = ConexionBD.getInstance();
@@ -35,9 +37,14 @@ public class Main {
         ControladorEquipos ctrEquipos = new ControladorEquipos(equipos);
         equipos.ControladorEquipos(ctrEquipos);
 
+        GUI_EstadisticasPartido estadisticasPartido = new GUI_EstadisticasPartido(1, frame, partidos);
+        ControladorEstadisticas ctrEstadisticas = new ControladorEstadisticas(estadisticasPartido);
+        estadisticasPartido.ControladorEstadisticas(ctrEstadisticas);
+
         frame.getContentPane().add(gui, "Inicial");
         frame.getContentPane().add(equipos, "Equipos");
         frame.getContentPane().add(partidos, "Partidos");
+        frame.getContentPane().add(estadisticasPartido, "EstadisticasPartido");
         layout.show(frame.getContentPane(), "Inicial");
 
 

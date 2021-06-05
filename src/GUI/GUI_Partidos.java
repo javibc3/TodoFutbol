@@ -2,11 +2,17 @@ package GUI;
 
 import main.ConexionBD;
 import main.Equipo;
+import main.Jugador;
 import main.Partidos;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +22,8 @@ public class GUI_Partidos extends JPanel {
     private final ConexionBD baseDatos = ConexionBD.getInstance();
 
     JPanel panelContenedor;
+
+    private Partidos partido;
     private final JFrame framePrincipal;
     private final JPanel panelArriba;
     private final JPanel subpanelTitulo;
@@ -40,6 +48,9 @@ public class GUI_Partidos extends JPanel {
     private final JLabel lbClasif1;
     private final JLabel lbClasif2;
     private final JLabel lbClasif3;
+
+    private List<Partidos> listaPartidos = new ArrayList<>();
+    JList lista = new JList();
 
     public GUI_Partidos(JFrame frame) {
         framePrincipal = frame;
@@ -94,13 +105,20 @@ public class GUI_Partidos extends JPanel {
         lblClasificacion.setHorizontalAlignment(SwingConstants.CENTER);
         subpanelEnBlanco1.add(lblClasificacion);
 
-        List<Partidos> listaPartidos = new ArrayList<>();
+
         List<Equipo> listaEquipos = new ArrayList<>();
 
         main.ConexionBD BD = main.ConexionBD.getInstance();
 
         listaPartidos = BD.getPartidos();
-        panelPartidos.add(new GUI_EquiposPartido(listaPartidos));
+        lista=ListToJlist(listaPartidos);
+        lista.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                jlistEvent(e);
+            }
+        });
+
+        panelPartidos.add(lista);
 
         listaEquipos = RankingEquipos(baseDatos);
         lbClasif1 = new JLabel("1º " + listaEquipos.get(0).getNombre() + " con " + listaEquipos.get(0).getPuntos() + " puntos");
@@ -190,6 +208,16 @@ public class GUI_Partidos extends JPanel {
         return Top3;
     }
 
+    public JList<Partidos> ListToJlist(List<Partidos> lista) {
+        JList<Partidos> nuevo = new JList();
+        DefaultListModel modelo = new DefaultListModel();
+        for (int i = 0; i < lista.size(); i++) {
+            modelo.addElement(lista.get(i));
+        }
+        nuevo.setModel(modelo);
+        return nuevo;
+    }
+
     public void controlador(ActionListener ctr) {
         //boton partidos
         botonPartidos.addActionListener(ctr);
@@ -203,6 +231,28 @@ public class GUI_Partidos extends JPanel {
         //boton prensa--goleadores
         botonPrensa.addActionListener(ctr);
         botonPrensa.setActionCommand("BOTON PAR:PRENSA");
+
+    }
+
+    public void jlistEvent(ListSelectionEvent e) {
+        if(!lista.getValueIsAdjusting()) {
+            System.out.println(lista.getSelectedIndex());
+            LanzarEstadísticasPartido(lista.getSelectedIndex());
+        }
+    }
+
+    public void LanzarEstadísticasPartido(int indx){
+        if(indx<6){
+            partido=listaPartidos.get(indx);
+            CardLayout layout = (CardLayout) framePrincipal.getContentPane().getLayout();
+            layout.show(framePrincipal.getContentPane(), "EstadisticasPartido");
+        }
+
+        System.out.println("Se ha pulsado el Partido" + "Abrir GUI_EstadisticasPartido");
+    }
+
+    public Partidos getPartido() {
+        return partido;
     }
 
     public void LanzarPartidos() {

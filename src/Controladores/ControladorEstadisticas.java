@@ -20,6 +20,7 @@ public class ControladorEstadisticas implements ActionListener{
             case "BOTON EQUIPOS": EstadisticasPPal.LanzarEquipos();break;
             case "BOTON PRENSA": EstadisticasPPal.LanzarPrensa();break;
             case "BOTON FOROS": EstadisticasPPal.LanzarForos();break;
+            case "BOTON CARGAR": EstadisticasPPal.LanzarEstadisticas();break;
         }
     }
 }
