@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/Pablo/TodoFutbol/src</OriginalElement>
+  <nodes>
+    <node x="1144.4930303030312" y="2124.0">tests.MainPruebaEstadio</node>
+    <node x="2634.3263636363645" y="0.0">main.Estadisticas_Partidos</node>
+    <node x="1853.3316328175365" y="1278.5">main.Pichichi</node>
+    <node x="2266.9097856221797" y="1059.0">GUI.GUI_EstadisticasJugador</node>
+    <node x="1889.8316328175365" y="2124.0">tests.MainPruebaPichichi</node>
+    <node x="2367.9247517730496" y="3526.0">Controladores.ControladorEstadisticas</node>
+    <node x="1492.2067214700182" y="2758.0">GUI.GUI_Prensa</node>
+    <node x="749.9999999999999" y="2670.0">GUI.GUI_Equipos</node>
+    <node x="787.9999999999999" y="2124.0">tests.PruebaConexionBD</node>
+    <node x="1007.9914184397163" y="77.5">main.Estadio</node>
+    <node x="2342.3263636363645" y="55.5">main.Estadistica</node>
+    <node x="1633.0122517730497" y="77.0">main.Partidos</node>
+    <node x="393.5" y="567.5">GUI.GUI_EquiposEstadio</node>
+    <node x="1482.4567214700182" y="3526.0">Controladores.ControladorPrensa</node>
+    <node x="1596.5" y="1793.0">GUI.GUI_Inicial</node>
+    <node x="10.5" y="523.5">GUI.GUI_EquiposJugadores</node>
+    <node x="1124.5" y="1234.5">main.Equipo</node>
+    <node x="1824.875" y="3764.0">main.Main</node>
+    <node x="732.4999999999999" y="3526.0">Controladores.ControladorEquipos</node>
+    <node x="532.0" y="2124.0">tests.MainPruebaOrdenaEquipos</node>
+    <node x="648.9999999999999" y="644.5">GUI.GUI_EquiposPartido</node>
+    <node x="2267.7430303030314" y="1749.0">GUI.GUI_Partidos</node>
+    <node x="1727.4567214700182" y="3482.0">Controladores.Controlador</node>
+    <node x="1761.1247517730494" y="468.0">main.ConexionBD</node>
+    <node x="262.1164184397162" y="77.5">main.Jugador</node>
+    <node x="2437.8483881366847" y="2681.0">GUI.GUI_EstadisticasPartido</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="GUI.GUI_EstadisticasPartido" target="GUI.GUI_Partidos" relationship="DEPENDENCY">
+      <point x="-120.80000000000018" y="-359.0" />
+      <point x="2468.0483881366845" y="2649.0" />
+      <point x="2335.4930303030314" y="2649.0" />
+      <point x="-67.75" y="414.5" />
+    </edge>
+    <edge source="Controladores.ControladorPrensa" target="GUI.GUI_Prensa" relationship="TO_ONE">
+      <point x="56.25" y="-51.0" />
+      <point x="53.0" y="282.0" />
+    </edge>
+    <edge source="tests.MainPruebaEstadio" target="main.Estadio" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="1234.9930303030312" y="1708.0" />
+      <point x="1114.0" y="1708.0" />
+      <point x="1114.0" y="987.0" />
+      <point x="997.998388136685" y="987.0" />
+      <point x="997.998388136685" y="427.0" />
+      <point x="1134.9914184397162" y="427.0" />
+      <point x="0.0" y="105.5" />
+    </edge>
+    <edge source="main.Partidos" target="main.Equipo" relationship="DEPENDENCY">
+      <point x="-38.125" y="106.0" />
+      <point x="1747.3872517730497" y="407.0" />
+      <point x="1696.7622517730497" y="407.0" />
+      <point x="1696.7622517730497" y="1007.0" />
+      <point x="1336.408085106383" y="1007.0" />
+      <point x="1336.408085106383" y="1037.0" />
+      <point x="1381.1666666666665" y="1037.0" />
+      <point x="36.66666666666674" y="-128.5" />
+    </edge>
+    <edge source="GUI.GUI_EstadisticasJugador" target="main.Estadistica" relationship="DEPENDENCY">
+      <point x="82.25" y="-304.0" />
+      <point x="2513.6597856221797" y="1007.0" />
+      <point x="2436.9097856221797" y="1007.0" />
+      <point x="2436.9097856221797" y="397.0" />
+      <point x="2478.3263636363645" y="397.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="GUI.GUI_Partidos" target="main.ConexionBD" relationship="TO_ONE">
+      <point x="-67.75" y="-414.5" />
+      <point x="2335.4930303030314" y="1708.0" />
+      <point x="2197.5816328175365" y="1708.0" />
+      <point x="2197.5816328175365" y="1027.0" />
+      <point x="1917.1247517730494" y="1027.0" />
+      <point x="0.0" y="238.5" />
+    </edge>
+    <edge source="main.Main" target="GUI.GUI_Equipos" relationship="CREATE">
+      <point x="-64.72727272727298" y="-62.0" />
+      <point x="1849.147727272727" y="3733.0" />
+      <point x="968.9999999999999" y="3733.0" />
+      <point x="968.9999999999999" y="3451.0" />
+      <point x="943.4999999999999" y="3451.0" />
+      <point x="64.5" y="370.0" />
+    </edge>
+    <edge source="GUI.GUI_EquiposPartido" target="main.Partidos" relationship="DEPENDENCY">
+      <point x="0.0" y="-62.0" />
+      <point x="765.9999999999999" y="417.0" />
+      <point x="1917.1247517730494" y="417.0" />
+      <point x="1917.1247517730494" y="407.0" />
+      <point x="1823.6372517730497" y="407.0" />
+      <point x="38.125" y="106.0" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="main.ConexionBD" relationship="DEPENDENCY">
+      <point x="53.75" y="-370.0" />
+      <point x="932.7499999999999" y="2619.0" />
+      <point x="1575.0" y="2619.0" />
+      <point x="1575.0" y="1017.0" />
+      <point x="1957.6247517730494" y="1017.0" />
+      <point x="1957.6247517730494" y="1007.0" />
+      <point x="2021.1247517730494" y="1007.0" />
+      <point x="104.0" y="238.5" />
+    </edge>
+    <edge source="main.ConexionBD" target="main.Estadistica" relationship="CREATE">
+      <point x="62.40000000000009" y="-238.5" />
+      <point x="1979.5247517730495" y="397.0" />
+      <point x="2478.3263636363645" y="397.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="main.Main" target="Controladores.ControladorEquipos" relationship="CREATE">
+      <point x="-80.90909090909099" y="-62.0" />
+      <point x="1832.965909090909" y="3743.0" />
+      <point x="845.4999999999999" y="3743.0" />
+      <point x="0.0" y="51.0" />
+    </edge>
+    <edge source="main.Main" target="main.ConexionBD" relationship="DEPENDENCY">
+      <point x="80.90909090909099" y="-62.0" />
+      <point x="1994.784090909091" y="3743.0" />
+      <point x="2879.7013636363645" y="3743.0" />
+      <point x="2879.7013636363645" y="1017.0" />
+      <point x="1957.6247517730494" y="1017.0" />
+      <point x="1957.6247517730494" y="1007.0" />
+      <point x="2021.1247517730494" y="1007.0" />
+      <point x="104.0" y="238.5" />
+    </edge>
+    <edge source="main.ConexionBD" target="main.Estadio" relationship="CREATE">
+      <point x="-62.40000000000009" y="-238.5" />
+      <point x="1854.7247517730493" y="427.0" />
+      <point x="1134.9914184397162" y="427.0" />
+      <point x="0.0" y="105.5" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="GUI.GUI_EquiposJugadores" relationship="CREATE">
+      <point x="-96.75" y="-370.0" />
+      <point x="782.2499999999999" y="2639.0" />
+      <point x="186.0" y="2639.0" />
+      <point x="0.0" y="183.0" />
+    </edge>
+    <edge source="Controladores.Controlador" target="GUI.GUI_Partidos" relationship="DEPENDENCY">
+      <point x="56.25" y="-95.0" />
+      <point x="1896.2067214700182" y="3451.0" />
+      <point x="2031.2067214700182" y="3451.0" />
+      <point x="2031.2067214700182" y="2649.0" />
+      <point x="2335.4930303030314" y="2649.0" />
+      <point x="-67.75" y="414.5" />
+    </edge>
+    <edge source="GUI.GUI_EstadisticasJugador" target="main.ConexionBD" relationship="DEPENDENCY">
+      <point x="-82.25" y="-304.0" />
+      <point x="2349.1597856221797" y="1017.0" />
+      <point x="1957.6247517730494" y="1017.0" />
+      <point x="1957.6247517730494" y="1007.0" />
+      <point x="2021.1247517730494" y="1007.0" />
+      <point x="104.0" y="238.5" />
+    </edge>
+    <edge source="tests.MainPruebaEstadio" target="main.Equipo" relationship="DEPENDENCY">
+      <point x="-60.33333333333337" y="-39.5" />
+      <point x="1174.659696969698" y="1718.0" />
+      <point x="991.4999999999999" y="1718.0" />
+      <point x="991.4999999999999" y="1698.0" />
+      <point x="1234.5" y="1698.0" />
+      <point x="-110.0" y="128.5" />
+    </edge>
+    <edge source="tests.PruebaConexionBD" target="main.Equipo" relationship="DEPENDENCY">
+      <point x="60.66666666666674" y="-39.5" />
+      <point x="939.6666666666666" y="1718.0" />
+      <point x="991.4999999999999" y="1718.0" />
+      <point x="991.4999999999999" y="1698.0" />
+      <point x="1234.5" y="1698.0" />
+      <point x="-110.0" y="128.5" />
+    </edge>
+    <edge source="main.Main" target="GUI.GUI_Prensa" relationship="CREATE">
+      <point x="-32.36363636363649" y="-62.0" />
+      <point x="1881.5113636363635" y="3713.0" />
+      <point x="1471.9567214700182" y="3713.0" />
+      <point x="1471.9567214700182" y="3461.0" />
+      <point x="1545.875" y="3461.0" />
+      <point x="-53.0" y="282.0" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="GUI.GUI_Inicial" relationship="DEPENDENCY">
+      <point x="118.25" y="-370.0" />
+      <point x="997.2499999999999" y="2639.0" />
+      <point x="1707.5" y="2639.0" />
+      <point x="1707.5" y="2629.0" />
+      <point x="1755.5" y="2629.0" />
+      <point x="53.0" y="370.5" />
+    </edge>
+    <edge source="main.Main" target="Controladores.ControladorEstadisticas" relationship="CREATE">
+      <point x="48.545454545454504" y="-62.0" />
+      <point x="1962.4204545454545" y="3723.0" />
+      <point x="2516.9247517730496" y="3723.0" />
+      <point x="0.0" y="51.0" />
+    </edge>
+    <edge source="tests.MainPruebaOrdenaEquipos" target="main.Jugador" relationship="DEPENDENCY">
+      <point x="-58.75" y="-39.5" />
+      <point x="590.75" y="1728.0" />
+      <point x="383.0" y="1728.0" />
+      <point x="383.0" y="437.0" />
+      <point x="395.1164184397162" y="437.0" />
+      <point x="395.1164184397162" y="417.0" />
+      <point x="331.1164184397162" y="417.0" />
+      <point x="-69.0" y="105.5" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="main.Estadio" relationship="DEPENDENCY">
+      <point x="-75.25" y="-370.0" />
+      <point x="803.7499999999999" y="2629.0" />
+      <point x="372.0" y="2629.0" />
+      <point x="372.0" y="427.0" />
+      <point x="1134.9914184397162" y="427.0" />
+      <point x="0.0" y="105.5" />
+    </edge>
+    <edge source="Controladores.Controlador" target="GUI.GUI_Inicial" relationship="TO_ONE">
+      <point x="-18.75" y="-95.0" />
+      <point x="1821.2067214700182" y="3431.0" />
+      <point x="1947.6997517730497" y="3431.0" />
+      <point x="1947.6997517730497" y="2649.0" />
+      <point x="1697.0" y="2649.0" />
+      <point x="1697.0" y="2629.0" />
+      <point x="1649.5" y="2629.0" />
+      <point x="-53.0" y="370.5" />
+    </edge>
+    <edge source="Controladores.ControladorEstadisticas" target="GUI.GUI_EstadisticasPartido" relationship="DEPENDENCY">
+      <point x="74.5" y="-51.0" />
+      <point x="2591.4247517730496" y="3461.0" />
+      <point x="2676.4247517730496" y="3461.0" />
+      <point x="2676.4247517730496" y="3451.0" />
+      <point x="2664.3483881366847" y="3451.0" />
+      <point x="75.5" y="359.0" />
+    </edge>
+    <edge source="main.ConexionBD" target="main.Estadisticas_Partidos" relationship="CREATE">
+      <point x="124.79999999999995" y="-238.5" />
+      <point x="2041.9247517730496" y="407.0" />
+      <point x="2832.3263636363645" y="407.0" />
+      <point x="0.0" y="183.0" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="GUI.GUI_EquiposPartido" relationship="CREATE">
+      <point x="-32.25" y="-370.0" />
+      <point x="846.7499999999999" y="2609.0" />
+      <point x="521.5" y="2609.0" />
+      <point x="521.5" y="1007.0" />
+      <point x="765.9999999999999" y="1007.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="main.Equipo" target="main.ConexionBD" relationship="TO_ONE">
+      <point x="110.0" y="-128.5" />
+      <point x="1454.5" y="1027.0" />
+      <point x="1917.1247517730494" y="1027.0" />
+      <point x="0.0" y="238.5" />
+    </edge>
+    <edge source="GUI.GUI_Partidos" target="main.Equipo" relationship="DEPENDENCY">
+      <point x="-112.91666666666652" y="-414.5" />
+      <point x="2290.3263636363645" y="1718.0" />
+      <point x="991.4999999999999" y="1718.0" />
+      <point x="991.4999999999999" y="1698.0" />
+      <point x="1234.5" y="1698.0" />
+      <point x="-110.0" y="128.5" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="main.Equipo" relationship="TO_ONE">
+      <point x="75.25" y="-370.0" />
+      <point x="954.2499999999999" y="2629.0" />
+      <point x="1586.0" y="2629.0" />
+      <point x="1586.0" y="1728.0" />
+      <point x="1644.25" y="1728.0" />
+      <point x="1644.25" y="1698.0" />
+      <point x="1454.5" y="1698.0" />
+      <point x="110.0" y="128.5" />
+    </edge>
+    <edge source="GUI.GUI_Partidos" target="main.Partidos" relationship="DEPENDENCY">
+      <point x="22.583333333333485" y="-414.5" />
+      <point x="2425.8263636363645" y="1688.0" />
+      <point x="2256.4097856221797" y="1688.0" />
+      <point x="2256.4097856221797" y="417.0" />
+      <point x="1917.1247517730494" y="417.0" />
+      <point x="1917.1247517730494" y="407.0" />
+      <point x="1823.6372517730497" y="407.0" />
+      <point x="38.125" y="106.0" />
+    </edge>
+    <edge source="main.ConexionBD" target="main.Equipo" relationship="CREATE">
+      <point x="-104.0" y="238.5" />
+      <point x="1813.1247517730494" y="1007.0" />
+      <point x="1336.408085106383" y="1007.0" />
+      <point x="1336.408085106383" y="1037.0" />
+      <point x="1381.1666666666665" y="1037.0" />
+      <point x="36.66666666666674" y="-128.5" />
+    </edge>
+    <edge source="main.Main" target="Controladores.ControladorPrensa" relationship="CREATE">
+      <point x="-16.181818181818016" y="-62.0" />
+      <point x="1897.693181818182" y="3703.0" />
+      <point x="1594.9567214700182" y="3703.0" />
+      <point x="0.0" y="51.0" />
+    </edge>
+    <edge source="GUI.GUI_Inicial" target="main.Equipo" relationship="DEPENDENCY">
+      <point x="-84.79999999999995" y="-370.5" />
+      <point x="1617.6999999999998" y="1718.0" />
+      <point x="991.4999999999999" y="1718.0" />
+      <point x="991.4999999999999" y="1698.0" />
+      <point x="1234.5" y="1698.0" />
+      <point x="-110.0" y="128.5" />
+    </edge>
+    <edge source="main.Pichichi" target="main.ConexionBD" relationship="TO_ONE">
+      <point x="-64.00000000000023" y="-84.5" />
+      <point x="0.0" y="238.5" />
+    </edge>
+    <edge source="main.ConexionBD" target="main.Jugador" relationship="CREATE">
+      <point x="-124.79999999999995" y="-238.5" />
+      <point x="1792.3247517730497" y="437.0" />
+      <point x="395.1164184397162" y="437.0" />
+      <point x="395.1164184397162" y="417.0" />
+      <point x="331.1164184397162" y="417.0" />
+      <point x="-69.0" y="105.5" />
+    </edge>
+    <edge source="GUI.GUI_EquiposEstadio" target="main.Estadio" relationship="DEPENDENCY">
+      <point x="0.0" y="-139.0" />
+      <point x="510.5" y="427.0" />
+      <point x="1134.9914184397162" y="427.0" />
+      <point x="0.0" y="105.5" />
+    </edge>
+    <edge source="GUI.GUI_Inicial" target="main.ConexionBD" relationship="TO_ONE">
+      <point x="42.40000000000009" y="-370.5" />
+      <point x="1744.9" y="1708.0" />
+      <point x="1683.5" y="1708.0" />
+      <point x="1683.5" y="1027.0" />
+      <point x="1917.1247517730494" y="1027.0" />
+      <point x="0.0" y="238.5" />
+    </edge>
+    <edge source="tests.PruebaConexionBD" target="main.Jugador" relationship="DEPENDENCY">
+      <point x="-60.66666666666674" y="-39.5" />
+      <point x="818.3333333333331" y="1708.0" />
+      <point x="638.4999999999999" y="1708.0" />
+      <point x="638.4999999999999" y="437.0" />
+      <point x="395.1164184397162" y="437.0" />
+      <point x="395.1164184397162" y="417.0" />
+      <point x="331.1164184397162" y="417.0" />
+      <point x="-69.0" y="105.5" />
+    </edge>
+    <edge source="Controladores.ControladorEquipos" target="GUI.GUI_Equipos" relationship="DEPENDENCY">
+      <point x="56.5" y="-51.0" />
+      <point x="901.9999999999999" y="3461.0" />
+      <point x="968.9999999999999" y="3461.0" />
+      <point x="968.9999999999999" y="3451.0" />
+      <point x="943.4999999999999" y="3451.0" />
+      <point x="64.5" y="370.0" />
+    </edge>
+    <edge source="tests.MainPruebaOrdenaEquipos" target="main.Equipo" relationship="CREATE">
+      <point x="58.75" y="-39.5" />
+      <point x="708.25" y="1718.0" />
+      <point x="991.4999999999999" y="1718.0" />
+      <point x="991.4999999999999" y="1698.0" />
+      <point x="1234.5" y="1698.0" />
+      <point x="-110.0" y="128.5" />
+    </edge>
+    <edge source="main.ConexionBD" target="main.Partidos" relationship="CREATE">
+      <point x="0.0" y="-238.5" />
+      <point x="1917.1247517730494" y="407.0" />
+      <point x="1823.6372517730497" y="407.0" />
+      <point x="38.125" y="106.0" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="main.ConexionBD" relationship="TO_ONE">
+      <point x="10.75" y="-370.0" />
+      <point x="889.7499999999999" y="2599.0" />
+      <point x="980.4999999999999" y="2599.0" />
+      <point x="980.4999999999999" y="1027.0" />
+      <point x="1917.1247517730494" y="1027.0" />
+      <point x="0.0" y="238.5" />
+    </edge>
+    <edge source="main.Main" target="Controladores.Controlador" relationship="CREATE">
+      <point x="0.0" y="-62.0" />
+      <point x="1913.875" y="3693.0" />
+      <point x="1839.9567214700182" y="3693.0" />
+      <point x="0.0" y="95.0" />
+    </edge>
+    <edge source="tests.MainPruebaPichichi" target="main.Pichichi" relationship="CREATE">
+      <point x="0.0" y="-39.5" />
+      <point x="0.0" y="84.5" />
+    </edge>
+    <edge source="main.Main" target="GUI.GUI_Partidos" relationship="CREATE">
+      <point x="32.36363636363649" y="-62.0" />
+      <point x="1946.2386363636365" y="3713.0" />
+      <point x="2335.4930303030314" y="3713.0" />
+      <point x="-67.75" y="414.5" />
+    </edge>
+    <edge source="GUI.GUI_EstadisticasPartido" target="main.ConexionBD" relationship="DEPENDENCY">
+      <point x="0.0" y="-359.0" />
+      <point x="2588.8483881366847" y="2629.0" />
+      <point x="2725.0747517730497" y="2629.0" />
+      <point x="2725.0747517730497" y="1017.0" />
+      <point x="1957.6247517730494" y="1017.0" />
+      <point x="1957.6247517730494" y="1007.0" />
+      <point x="2021.1247517730494" y="1007.0" />
+      <point x="104.0" y="238.5" />
+    </edge>
+    <edge source="Controladores.Controlador" target="GUI.GUI_Prensa" relationship="DEPENDENCY">
+      <point x="-93.75" y="-95.0" />
+      <point x="1746.2067214700182" y="3461.0" />
+      <point x="1545.875" y="3461.0" />
+      <point x="-53.0" y="282.0" />
+    </edge>
+    <edge source="Controladores.ControladorPrensa" target="GUI.GUI_Prensa" relationship="DEPENDENCY">
+      <point x="-56.25" y="-51.0" />
+      <point x="1538.7067214700182" y="3461.0" />
+      <point x="1545.875" y="3461.0" />
+      <point x="-53.0" y="282.0" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="main.Partidos" relationship="DEPENDENCY">
+      <point x="-10.75" y="-370.0" />
+      <point x="868.2499999999999" y="2599.0" />
+      <point x="777.4999999999999" y="2599.0" />
+      <point x="777.4999999999999" y="997.0" />
+      <point x="1707.7622517730497" y="997.0" />
+      <point x="1707.7622517730497" y="417.0" />
+      <point x="1917.1247517730494" y="417.0" />
+      <point x="1917.1247517730494" y="407.0" />
+      <point x="1823.6372517730497" y="407.0" />
+      <point x="38.125" y="106.0" />
+    </edge>
+    <edge source="GUI.GUI_Partidos" target="main.ConexionBD" relationship="DEPENDENCY">
+      <point x="-22.583333333333485" y="-414.5" />
+      <point x="2380.6596969696975" y="1698.0" />
+      <point x="2233.4497517730497" y="1698.0" />
+      <point x="2233.4497517730497" y="1017.0" />
+      <point x="1957.6247517730494" y="1017.0" />
+      <point x="1957.6247517730494" y="1007.0" />
+      <point x="2021.1247517730494" y="1007.0" />
+      <point x="104.0" y="238.5" />
+    </edge>
+    <edge source="GUI.GUI_EquiposJugadores" target="main.Jugador" relationship="DEPENDENCY">
+      <point x="-87.75" y="-183.0" />
+      <point x="98.25" y="437.0" />
+      <point x="395.1164184397162" y="437.0" />
+      <point x="395.1164184397162" y="417.0" />
+      <point x="331.1164184397162" y="417.0" />
+      <point x="-69.0" y="105.5" />
+    </edge>
+    <edge source="main.Main" target="GUI.GUI_EstadisticasPartido" relationship="CREATE">
+      <point x="64.72727272727252" y="-62.0" />
+      <point x="1978.6022727272725" y="3733.0" />
+      <point x="2676.4247517730496" y="3733.0" />
+      <point x="2676.4247517730496" y="3451.0" />
+      <point x="2664.3483881366847" y="3451.0" />
+      <point x="75.5" y="359.0" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="GUI.GUI_Inicial" relationship="TO_ONE">
+      <point x="96.75" y="-370.0" />
+      <point x="975.7499999999999" y="2649.0" />
+      <point x="1697.0" y="2649.0" />
+      <point x="1697.0" y="2629.0" />
+      <point x="1649.5" y="2629.0" />
+      <point x="-53.0" y="370.5" />
+    </edge>
+    <edge source="Controladores.Controlador" target="GUI.GUI_Partidos" relationship="TO_ONE">
+      <point x="93.75" y="-95.0" />
+      <point x="1933.7067214700182" y="3461.0" />
+      <point x="2042.2067214700182" y="3461.0" />
+      <point x="2042.2067214700182" y="2639.0" />
+      <point x="2391.043030303031" y="2639.0" />
+      <point x="2391.043030303031" y="2629.0" />
+      <point x="2470.9930303030314" y="2629.0" />
+      <point x="67.75" y="414.5" />
+    </edge>
+    <edge source="GUI.GUI_EquiposJugadores" target="main.Jugador" relationship="TO_MANY">
+      <point x="87.75" y="-183.0" />
+      <point x="273.75" y="447.0" />
+      <point x="815.1180303030312" y="447.0" />
+      <point x="815.1180303030312" y="407.0" />
+      <point x="469.1164184397162" y="407.0" />
+      <point x="69.0" y="105.5" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="GUI.GUI_EquiposEstadio" relationship="CREATE">
+      <point x="-53.75" y="-370.0" />
+      <point x="825.2499999999999" y="2619.0" />
+      <point x="510.5" y="2619.0" />
+      <point x="0.0" y="139.0" />
+    </edge>
+    <edge source="GUI.GUI_EstadisticasPartido" target="GUI.GUI_Partidos" relationship="TO_ONE">
+      <point x="-60.40000000000009" y="-359.0" />
+      <point x="2528.448388136685" y="2639.0" />
+      <point x="2391.043030303031" y="2639.0" />
+      <point x="2391.043030303031" y="2629.0" />
+      <point x="2470.9930303030314" y="2629.0" />
+      <point x="67.75" y="414.5" />
+    </edge>
+    <edge source="tests.MainPruebaEstadio" target="main.ConexionBD" relationship="DEPENDENCY">
+      <point x="60.33333333333337" y="-39.5" />
+      <point x="1295.3263636363645" y="1708.0" />
+      <point x="1575.0" y="1708.0" />
+      <point x="1575.0" y="1017.0" />
+      <point x="1957.6247517730494" y="1017.0" />
+      <point x="1957.6247517730494" y="1007.0" />
+      <point x="2021.1247517730494" y="1007.0" />
+      <point x="104.0" y="238.5" />
+    </edge>
+    <edge source="Controladores.ControladorEquipos" target="GUI.GUI_Equipos" relationship="TO_ONE">
+      <point x="-56.5" y="-51.0" />
+      <point x="788.9999999999999" y="3461.0" />
+      <point x="814.4999999999999" y="3461.0" />
+      <point x="-64.5" y="370.0" />
+    </edge>
+    <edge source="GUI.GUI_Inicial" target="main.ConexionBD" relationship="DEPENDENCY">
+      <point x="84.79999999999995" y="-370.5" />
+      <point x="1787.2999999999997" y="1698.0" />
+      <point x="1694.5" y="1698.0" />
+      <point x="1694.5" y="1017.0" />
+      <point x="1957.6247517730494" y="1017.0" />
+      <point x="1957.6247517730494" y="1007.0" />
+      <point x="2021.1247517730494" y="1007.0" />
+      <point x="104.0" y="238.5" />
+    </edge>
+    <edge source="main.Equipo" target="main.ConexionBD" relationship="DEPENDENCY">
+      <point x="183.33333333333326" y="-128.5" />
+      <point x="1527.833333333333" y="1017.0" />
+      <point x="1957.6247517730494" y="1017.0" />
+      <point x="1957.6247517730494" y="1007.0" />
+      <point x="2021.1247517730494" y="1007.0" />
+      <point x="104.0" y="238.5" />
+    </edge>
+    <edge source="main.Main" target="main.ConexionBD" relationship="TO_ONE">
+      <point x="16.181818181818016" y="-62.0" />
+      <point x="1930.056818181818" y="3703.0" />
+      <point x="2183.3247517730497" y="3703.0" />
+      <point x="2183.3247517730497" y="1027.0" />
+      <point x="1917.1247517730494" y="1027.0" />
+      <point x="0.0" y="238.5" />
+    </edge>
+    <edge source="main.Equipo" target="main.Jugador" relationship="TO_MANY">
+      <point x="-110.0" y="-128.5" />
+      <point x="1234.5" y="977.0" />
+      <point x="1315.908085106383" y="977.0" />
+      <point x="1315.908085106383" y="447.0" />
+      <point x="815.1180303030312" y="447.0" />
+      <point x="815.1180303030312" y="407.0" />
+      <point x="469.1164184397162" y="407.0" />
+      <point x="69.0" y="105.5" />
+    </edge>
+    <edge source="Controladores.ControladorEstadisticas" target="GUI.GUI_EstadisticasPartido" relationship="TO_ONE">
+      <point x="-74.5" y="-51.0" />
+      <point x="2442.4247517730496" y="3461.0" />
+      <point x="2513.3483881366847" y="3461.0" />
+      <point x="-75.5" y="359.0" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="main.Equipo" relationship="DEPENDENCY">
+      <point x="32.25" y="-370.0" />
+      <point x="911.2499999999999" y="2609.0" />
+      <point x="991.4999999999999" y="2609.0" />
+      <point x="991.4999999999999" y="1698.0" />
+      <point x="1234.5" y="1698.0" />
+      <point x="-110.0" y="128.5" />
+    </edge>
+    <edge source="Controladores.Controlador" target="GUI.GUI_Inicial" relationship="DEPENDENCY">
+      <point x="18.75" y="-95.0" />
+      <point x="1858.7067214700182" y="3441.0" />
+      <point x="1958.6997517730497" y="3441.0" />
+      <point x="1958.6997517730497" y="2639.0" />
+      <point x="1707.5" y="2639.0" />
+      <point x="1707.5" y="2629.0" />
+      <point x="1755.5" y="2629.0" />
+      <point x="53.0" y="370.5" />
+    </edge>
+    <edge source="GUI.GUI_Equipos" target="main.Jugador" relationship="DEPENDENCY">
+      <point x="-118.25" y="-370.0" />
+      <point x="760.7499999999999" y="2649.0" />
+      <point x="0.0" y="2649.0" />
+      <point x="0.0" y="437.0" />
+      <point x="395.1164184397162" y="437.0" />
+      <point x="395.1164184397162" y="417.0" />
+      <point x="331.1164184397162" y="417.0" />
+      <point x="-69.0" y="105.5" />
+    </edge>
+    <edge source="main.Main" target="GUI.GUI_Inicial" relationship="CREATE">
+      <point x="-48.545454545454504" y="-62.0" />
+      <point x="1865.3295454545455" y="3723.0" />
+      <point x="1460.9567214700182" y="3723.0" />
+      <point x="1460.9567214700182" y="2639.0" />
+      <point x="1707.5" y="2639.0" />
+      <point x="1707.5" y="2629.0" />
+      <point x="1755.5" y="2629.0" />
+      <point x="53.0" y="370.5" />
+    </edge>
+    <edge source="tests.PruebaConexionBD" target="main.ConexionBD" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="878.9999999999999" y="1698.0" />
+      <point x="717.248388136685" y="1698.0" />
+      <point x="717.248388136685" y="1017.0" />
+      <point x="1957.6247517730494" y="1017.0" />
+      <point x="1957.6247517730494" y="1007.0" />
+      <point x="2021.1247517730494" y="1007.0" />
+      <point x="104.0" y="238.5" />
+    </edge>
+    <edge source="Controladores.Controlador" target="GUI.GUI_Prensa" relationship="TO_ONE">
+      <point x="-56.25" y="-95.0" />
+      <point x="1783.7067214700182" y="3451.0" />
+      <point x="1651.2067214700182" y="3451.0" />
+      <point x="53.0" y="282.0" />
+    </edge>
+    <edge source="GUI.GUI_EstadisticasPartido" target="main.Estadisticas_Partidos" relationship="DEPENDENCY">
+      <point x="120.80000000000018" y="-359.0" />
+      <point x="2709.648388136685" y="2649.0" />
+      <point x="2832.3263636363645" y="2649.0" />
+      <point x="0.0" y="183.0" />
+    </edge>
+    <edge source="GUI.GUI_Partidos" target="main.Partidos" relationship="TO_MANY">
+      <point x="67.75" y="-414.5" />
+      <point x="2470.9930303030314" y="1718.0" />
+      <point x="2692.0330851063827" y="1718.0" />
+      <point x="2692.0330851063827" y="447.0" />
+      <point x="2697.5330851063827" y="447.0" />
+      <point x="2697.5330851063827" y="387.0" />
+      <point x="1899.8872517730497" y="387.0" />
+      <point x="114.375" y="106.0" />
+    </edge>
+    <edge source="GUI.GUI_Inicial" target="main.Equipo" relationship="TO_ONE">
+      <point x="-42.40000000000009" y="-370.5" />
+      <point x="1660.1" y="1728.0" />
+      <point x="1644.25" y="1728.0" />
+      <point x="1644.25" y="1698.0" />
+      <point x="1454.5" y="1698.0" />
+      <point x="110.0" y="128.5" />
+    </edge>
+    <edge source="main.Partidos" target="main.Equipo" relationship="TO_ONE">
+      <point x="-114.375" y="106.0" />
+      <point x="1671.1372517730497" y="407.0" />
+      <point x="1565.8247517730497" y="407.0" />
+      <point x="1565.8247517730497" y="987.0" />
+      <point x="1307.833333333333" y="987.0" />
+      <point x="-36.66666666666674" y="-128.5" />
+    </edge>
+    <edge source="main.Equipo" target="main.Jugador" relationship="CREATE">
+      <point x="-183.33333333333326" y="-128.5" />
+      <point x="1161.1666666666665" y="967.0" />
+      <point x="1304.908085106383" y="967.0" />
+      <point x="1304.908085106383" y="437.0" />
+      <point x="395.1164184397162" y="437.0" />
+      <point x="395.1164184397162" y="417.0" />
+      <point x="331.1164184397162" y="417.0" />
+      <point x="-69.0" y="105.5" />
+    </edge>
+    <edge source="GUI.GUI_Partidos" target="main.Partidos" relationship="TO_ONE">
+      <point x="112.91666666666652" y="-414.5" />
+      <point x="2516.1596969696975" y="1728.0" />
+      <point x="2703.0330851063827" y="1728.0" />
+      <point x="2703.0330851063827" y="447.0" />
+      <point x="2697.5330851063827" y="447.0" />
+      <point x="2697.5330851063827" y="387.0" />
+      <point x="1899.8872517730497" y="387.0" />
+      <point x="114.375" y="106.0" />
+    </edge>
+    <edge source="main.Pichichi" target="main.ConexionBD" relationship="DEPENDENCY">
+      <point x="63.99999999999977" y="-84.5" />
+      <point x="2045.3316328175365" y="1017.0" />
+      <point x="1957.6247517730494" y="1017.0" />
+      <point x="1957.6247517730494" y="1007.0" />
+      <point x="2021.1247517730494" y="1007.0" />
+      <point x="104.0" y="238.5" />
+    </edge>
+    <edge source="GUI.GUI_Inicial" target="main.Equipo" relationship="TO_MANY">
+      <point x="0.0" y="-370.5" />
+      <point x="1702.5" y="1728.0" />
+      <point x="1644.25" y="1728.0" />
+      <point x="1644.25" y="1698.0" />
+      <point x="1454.5" y="1698.0" />
+      <point x="110.0" y="128.5" />
+    </edge>
+    <edge source="GUI.GUI_EstadisticasPartido" target="main.Partidos" relationship="DEPENDENCY">
+      <point x="60.40000000000009" y="-359.0" />
+      <point x="2649.248388136685" y="2639.0" />
+      <point x="2736.0747517730497" y="2639.0" />
+      <point x="2736.0747517730497" y="417.0" />
+      <point x="1917.1247517730494" y="417.0" />
+      <point x="1917.1247517730494" y="407.0" />
+      <point x="1823.6372517730497" y="407.0" />
+      <point x="38.125" y="106.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.27149437052200615" showDependencies="true" x="1515.5" y="1944.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
